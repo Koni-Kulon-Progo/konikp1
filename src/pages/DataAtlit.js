@@ -8,14 +8,14 @@ import {
 import { Layout, Menu, Row, Col, Divider } from 'antd';
 import React, { useState } from 'react';
 import Link from 'next/link'
-import NavbarSide from '@/components/NavbarSide';
+import Table from '../components/Table';
 const style = {
   background: '#0092ff',
   padding: '8px 0',
 };
 const { Header, Sider, Content } = Layout;
 
-function DataAtlit() {
+function DataAtlit(props) {
 
   const [collapsed, setCollapsed] = useState(false);
 
@@ -52,51 +52,7 @@ function DataAtlit() {
               ]}
           />
         </Sider>
-        
-    <Layout className="site-layout">
-          <Header
-              className="site-layout-background"
-              style={{
-                padding: 0,
-              }}
-              
-          >
-            {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-              className: 'trigger',
-              onClick: () => setCollapsed(!collapsed),
-            })}
-          </Header>
-          <Content
-              className="site-layout-background"
-              style={{
-                margin: '24px 16px',
-                padding: 24,
-              }}
-          >
-            <Divider orientation="center">DATA ATLIT</Divider>
-    <Row
-      gutter={{
-        xs: 8,
-        sm: 16,
-        md: 24,
-        lg: 32,
-      }}
-    >
-      <Col className="gutter-row" span={6}>
-        <div style={style}>col-6</div>
-      </Col>
-      <Col className="gutter-row" span={6}>
-        <div style={style}>col-6</div>
-      </Col>
-      <Col className="gutter-row" span={6}>
-        <div style={style}>col-6</div>
-      </Col>
-      <Col className="gutter-row" span={6}>
-        <div style={style}>col-6</div>
-      </Col>
-    </Row>
-          </Content>
-        </Layout>
+              <Table />
         </Layout>
     </>
     

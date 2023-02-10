@@ -11,11 +11,14 @@ datasource db {
 }
 
 model Atlit {
-  id        Int    @id
-  nama      String
-  alamat    String
-  cabor     Cabor    @relation(fields: [cabor_id], references: [nama])
-  cabor_id  Int  
+  id          Int    @id
+  nama        String
+  alamat      String
+  ttl         String
+  telephone   String
+  gender      String
+  cabor     Cabor    @relation(fields: [cabor_id], references: [id])
+  cabor_id    Int  
 }
 
 model Cabor {

@@ -19,6 +19,7 @@ export async function getServerSideProps() {
       cabor: true,
     }
   })
+  console.log(atlit)
 
   return { 
     props: {
@@ -67,6 +68,7 @@ export default function Home({  atlit }) {
     <p>Nama: {atlits.nama}</p>
     <p>Alamat: {atlits.alamat}</p>
     <p>Cabor: {atlits.cabor.nama}</p>
+    <p>TT: {atlits.ttl}</p>
   </div>
 ))}
 

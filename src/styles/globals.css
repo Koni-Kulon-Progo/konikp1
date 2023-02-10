@@ -27,3 +27,7 @@ body {
 .layout {
   height: 100vh;
 }
+
+.container-table {
+  text-align: center;
+}

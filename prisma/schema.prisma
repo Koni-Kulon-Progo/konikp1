@@ -1,0 +1,25 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Atlit {
+  id        Int    @id
+  nama      String
+  alamat    String
+  cabor     Cabor    @relation(fields: [cabor_id], references: [nama])
+  cabor_id  Int  
+}
+
+model Cabor {
+  id    Int     @id
+  nama  String
+  atlit Atlit[]
+}

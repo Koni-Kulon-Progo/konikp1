@@ -5,10 +5,11 @@ import {
   UserOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
-import { Layout, Menu, Row, Col, Divider, Table, Form, Modal, Input } from 'antd';
+import { Layout, Menu, Row, Col, Divider, Table, Form, Modal, Input, Button} from 'antd';
 import React, { useState } from 'react';
 import Link from 'next/link'
 import prisma from '@/utils/prisma';
+import { useRouter } from 'next/router'
 
 const { Header, Sider, Content } = Layout;
 
@@ -19,8 +20,6 @@ export async function getServerSideProps() {
     }
   })
 
-  console.log(atlit)
-  
   return { 
     props: {
       atlit,
@@ -30,42 +29,56 @@ export async function getServerSideProps() {
 
 function DataAtlit({ atlit }) {
   const [collapsed, setCollapsed] = useState(false);
+  const router = useRouter()
 
   //  edit
   const [visible, setVisible] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(null);
 
+  const refreshData = () => {
+    router.replace(router.asPath)
+  }
 
   const handleEdit = (index) => {
+    form.resetFields()
     setCurrentIndex(index);
     setVisible(true);
   };
 
   const handleSubmit = async () => {
+    const values = await form.validateFields();
     try {
-      const values = await form.validateFields();
-      const updatedAtlit = await prisma.atlit.update({
-        where: {
-          id: atlit[currentIndex].id
+      await fetch('/api/atlit', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
         },
-        data: {
-          ...values
-        }
-      });
-      console.log(updatedAtlit);
+        body: JSON.stringify(values)
+      })
+      form.resetFields()
       setVisible(false);
+      refreshData()
     } catch (error) {
       console.error(error);
     }
   };
 
   const handleCancel = () => {
+    form.resetFields()
+    setCurrentIndex(null);
     setVisible(false);
   };
 
-  const handleDelete = () => {
-    alert("handle delete berfungsi")
-  }
+  const handleDelete = async (index) => {
+    await fetch('/api/atlit', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id: atlit[index].id })
+    })
+    refreshData()
+  };
 
   const columns = [
     {
@@ -110,14 +123,14 @@ function DataAtlit({ atlit }) {
       key: 'operation',
       fixed: 'right',
       width: 100,
-      render: (text,record,index) => <button onClick={() => handleEdit(index)}>Edit</button>,
+      render: (text,record,index) => <Button type='primary' onClick={() => handleEdit(index)}>Edit</Button>,
     },
     {
       title: "Action",
       key: 'operation',
       fixed: 'right',
       width: 100,
-      render: () => <button onClick={handleDelete}>Delete</button>,
+      render: (text,record,index) => <Button type='primary' danger onClick={() => handleDelete(index)}>Delete</Button>,
     }
   ];
 
@@ -166,24 +179,34 @@ function DataAtlit({ atlit }) {
                     <Link href="/DataAtlit">Data Atlit</Link>
                   ),
                 },
-              ]}
+      ]}
           />
         </Sider>
         <div>
+          <h1>DATA ATLIT KONI KP</h1>
         <Table
-              columns={columns}
-              dataSource={data}
-              scroll={{
-                x: 1700,
-              }}
-              />
-              <Modal
+          columns={columns}
+          dataSource={data}
+          scroll={{
+            x: 1700,
+          }}
+        />
+      <Modal
         title="Edit Data Atlit"
-        visible={visible}
-        onClick={handleSubmit}
+        open={visible}
+        onOk={handleSubmit}
         onCancel={handleCancel}
+        destroyOnClose={true}
       >
-        <Form form={form} initialValues={atlit[currentIndex]}>
+        <Form preserve={false} form={form} initialValues={currentIndex === null ? {} : atlit[currentIndex]}>
+          <Form.Item
+            label="ID"
+            hidden={true}
+            name="id"
+            rules={[{ required: true, message: 'Tolong Input Nama lengkap!' }]}
+          >
+            <Input />
+          </Form.Item>
           <Form.Item
             label="Nama Lengkap"
             name="nama"

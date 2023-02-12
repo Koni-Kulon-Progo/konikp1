@@ -11,8 +11,6 @@ export async function getServerSideProps() {
     }
     
   })
-  console.log(atlit)
-
   return { 
     props: {
       atlit,
@@ -82,9 +80,6 @@ const data = atlit ? atlit.map((item, index) => {
     cabor: item.cabor.nama
   }
 }): [];
-
-console.log(data)
-
   return (
     <div className='container-table'>
       <Table

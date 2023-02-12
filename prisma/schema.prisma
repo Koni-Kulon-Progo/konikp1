@@ -26,3 +26,27 @@ model Cabor {
   nama  String
   atlit Atlit[]
 }
+
+model Pelatih {
+  id          Int   @id
+  nama        String
+  alamat      String
+  ttl         String
+  telephone   String
+  gender      String
+  cabor       String
+  keterangan  String
+  cabor_id    Int
+}
+
+model Wasit {
+  id          Int   @id
+  nama        String
+  alamat      String
+  ttl         String
+  telephone   String
+  gender      String
+  cabor       String
+  keterangan  String
+  cabor_id    Int
+}

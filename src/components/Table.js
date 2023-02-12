@@ -1,8 +1,28 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import { Table } from 'antd';
+import Link from 'next/link'
+import prisma from '../utils/prisma'
 
 
-function Tables() {
+export async function getServerSideProps() {
+  const atlit = await prisma.atlit.findMany({
+    include: {
+      cabor: true,
+    }
+    
+  })
+  console.log(atlit)
+
+  return { 
+    props: {
+      atlit,
+    }
+  }
+}
+
+function Tables({ atlit }) {
+
+  
   
 const columns = [
   {
@@ -24,12 +44,12 @@ const columns = [
   },
   {
     title: 'Alamat',
-    dataIndex: 'address',
+    dataIndex: 'alamat',
     key: '3',
   },
   {
     title: 'Telephone',
-    dataIndex: 'hp',
+    dataIndex: 'telephone',
     key: '4',
   },
   {
@@ -50,38 +70,21 @@ const columns = [
     render: () => <a>Edit</a>,
   },
 ];
-const data = [
-  {
-    key: '1',
-    name: 'Wagiman',
-    age: 32,
-    ttl: "jakarta, 3 Januari 1999",
-    address: 'Kokap',
-    hp : "083xxxx1",
-    gender : "laki-laki",
-    cabor : "Voli"
-  },
-  {
-    key: '2',
-    name: 'Yanto',
-    age: 40,
-    ttl: "Bandung, 6 Februari 2020",
-    address: 'Pekik Jamal',
-    hp : "082xxxx30",
-    gender : "laki-laki",
-    cabor : "bilyard"
-  },
-  {
-    key: '3',
-    name: 'Harjo',
-    age: 40,
-    ttl: "Wates, 17 Agustus 1945",
-    address: 'Wates',
-    hp : "0815xxxx60",
-    gender : "Wanita",
-    cabor : "Yongmodo"
-  },
-];
+
+const data = atlit ? atlit.map((item, index) => {
+  return {
+    key: index + 1,
+    name: item.nama,
+    ttl: item.ttl,
+    address: item.alamat,
+    hp: item.telephone,
+    gender: item.gender,
+    cabor: item.cabor.nama
+  }
+}): [];
+
+console.log(data)
+
   return (
     <div className='container-table'>
       <Table

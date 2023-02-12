@@ -5,30 +5,15 @@ import {
   UserOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu , Table} from 'antd';
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import prisma from '../utils/prisma'
-
 const { Header, Sider, Content } = Layout;
 
 
-export async function getServerSideProps() {
-  const atlit = await prisma.atlit.findMany({
-    include: {
-      cabor: true,
-    }
-  })
-  console.log(atlit)
 
-  return { 
-    props: {
-      atlit,
-    }
-  }
-}
-
-export default function Home({  atlit }) {
+export default function Home() {
   const [collapsed, setCollapsed] = useState(false);
   
   return (
@@ -63,14 +48,7 @@ export default function Home({  atlit }) {
           ]}
       />
     </Sider>
-    {atlit.map(atlits => (
-  <div key={atlits.id}>
-    <p>Nama: {atlits.nama}</p>
-    <p>Alamat: {atlits.alamat}</p>
-    <p>Cabor: {atlits.cabor.nama}</p>
-    <p>TT: {atlits.ttl}</p>
-  </div>
-))}
+   <h1>C O M I N G S O O N</h1>
 
   </Layout>
   )

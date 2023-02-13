@@ -1,11 +1,11 @@
 import {
   MenuFoldOutlined,
-  MenuUnfoldOutlined,
+  DeleteOutlined,
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
-import { Layout, Menu, Row, Col, Divider, Table, Form, Modal, Input, Button, Select} from 'antd';
+import { Layout, Menu, Table, Form, Modal, Input, Button, Select} from 'antd';
 import React, { useState } from 'react';
 import Link from 'next/link'
 import prisma from '@/utils/prisma';
@@ -147,7 +147,7 @@ function DataAtlit({ atlit,cabor }) {
       key: 'operation',
       fixed: 'right',
       width: 100,
-      render: (text,record,index) => <Button type='primary' danger onClick={() => handleDelete(index)}>Delete</Button>,
+      render: (text,record,index) => <Button type='primary' danger onClick={() => handleDelete(index)}><DeleteOutlined /></Button>,
     }
   ];
 
@@ -172,7 +172,8 @@ function DataAtlit({ atlit,cabor }) {
     <>
     <Layout className="layout">
         <Sider trigger={null} collapsible collapsed={collapsed}>
-          <div className="logo" />
+          
+          <DeleteOutlined />
           <Menu
               theme="dark"
               mode="inline"

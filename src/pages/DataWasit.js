@@ -68,7 +68,7 @@ function DataWasit({ wasit,cabor }) {
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ ...values, cabor_id: 1 })
+          body: JSON.stringify(values)
         })
       }
       

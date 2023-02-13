@@ -5,7 +5,7 @@ import {
   UserOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
-import { Layout, Menu, Row, Col, Divider, Table, Form, Modal, Input, Button} from 'antd';
+import { Layout, Menu, Row, Col, Divider, Table, Form, Modal, Input, Button, Select} from 'antd';
 import React, { useState } from 'react';
 import Link from 'next/link'
 import prisma from '@/utils/prisma';
@@ -14,6 +14,7 @@ import { useRouter } from 'next/router'
 const { Header, Sider, Content } = Layout;
 
 export async function getServerSideProps() {
+  const cabor = await prisma.cabor.findMany()
   const atlit = await prisma.atlit.findMany({
     include: {
       cabor: true,
@@ -23,11 +24,15 @@ export async function getServerSideProps() {
   return { 
     props: {
       atlit,
+      cabor: cabor.map(c => ({
+        label: c.nama,
+        value: c.id
+      }))
     }
   }
 }
 
-function DataAtlit({ atlit }) {
+function DataAtlit({ atlit,cabor }) {
   const [collapsed, setCollapsed] = useState(false);
   const router = useRouter()
 
@@ -48,20 +53,31 @@ function DataAtlit({ atlit }) {
   const handleSubmit = async () => {
     const values = await form.validateFields();
     try {
-      await fetch('/api/atlit', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(values)
-      })
+      if(values.id){
+        await fetch('/api/atlit', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(values)
+        })
+        
+      }else{
+        await fetch('/api/atlit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ ...values, cabor_id: 8 })
+        })
+      }
+      
       form.resetFields()
       setVisible(false);
       refreshData()
     } catch (error) {
       console.error(error);
-    }
-  };
+    }};
 
   const handleCancel = () => {
     form.resetFields()
@@ -79,6 +95,7 @@ function DataAtlit({ atlit }) {
     })
     refreshData()
   };
+
 
   const columns = [
     {
@@ -147,6 +164,8 @@ function DataAtlit({ atlit }) {
       cabor: item.cabor.nama
     }
   }): [];
+
+  
   
 
   return (
@@ -184,6 +203,7 @@ function DataAtlit({ atlit }) {
         </Sider>
         <div>
           <h1>DATA ATLIT KONI KP</h1>
+          <Button type='primary' onClick={() => setVisible(true)}>+ Data</Button>
         <Table
           columns={columns}
           dataSource={data}
@@ -203,7 +223,7 @@ function DataAtlit({ atlit }) {
             label="ID"
             hidden={true}
             name="id"
-            rules={[{ required: true, message: 'Tolong Input Nama lengkap!' }]}
+            rules={[{ required: false,}]}
           >
             <Input />
           </Form.Item>
@@ -242,7 +262,23 @@ function DataAtlit({ atlit }) {
           >
             <Input />
           </Form.Item>
+          <Form.Item>
+          <Select
+            showSearch
+            placeholder="Select a person"
+            optionFilterProp="children"
+            // onChange={onChange}
+            // onSearch={onSearch}
+            filterOption={(input, option) =>
+              (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+            }
+            options={cabor}
+  />
+
+            
+          </Form.Item>
         </Form>
+        
       </Modal>
         </div>
               

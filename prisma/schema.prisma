@@ -11,42 +11,44 @@ datasource db {
 }
 
 model Atlit {
-  id          Int    @id
+  id          Int    @id @default(autoincrement())
   nama        String
   alamat      String
   ttl         String
   telephone   String
   gender      String
-  cabor     Cabor    @relation(fields: [cabor_id], references: [id])
-  cabor_id    Int  
+  cabor_id    Int
+  cabor       Cabor    @relation(fields: [cabor_id], references: [id])
 }
 
 model Cabor {
-  id    Int     @id
-  nama  String
-  atlit Atlit[]
+  id          Int     @id @default(autoincrement())
+  nama        String
+  atlit       Atlit[]
+  pelatih     Pelatih[]
+  wasit       Wasit[]  
 }
 
 model Pelatih {
-  id          Int   @id
+  id          Int   @id @default(autoincrement())
   nama        String
   alamat      String
   ttl         String
   telephone   String
   gender      String
-  cabor       String
   keterangan  String
   cabor_id    Int
+  cabor       Cabor    @relation(fields: [cabor_id], references: [id])
 }
 
 model Wasit {
-  id          Int   @id
+  id          Int   @id @default(autoincrement())
   nama        String
   alamat      String
   ttl         String
   telephone   String
   gender      String
-  cabor       String
   keterangan  String
   cabor_id    Int
+  cabor       Cabor    @relation(fields: [cabor_id], references: [id])
 }

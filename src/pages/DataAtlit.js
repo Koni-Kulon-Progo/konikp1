@@ -85,16 +85,22 @@ function DataAtlit({ atlit,cabor }) {
     setVisible(false);
   };
 
-  const handleDelete = async (index) => {
-    await fetch('/api/atlit', {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ id: atlit[index].id })
-    })
-    refreshData()
-  };
+const handleDelete = (index) => {
+  Modal.confirm({
+    title: 'Apakah anda yakin menghapus data atlit ini?',
+    onOk: async () => {
+      await fetch('/api/atlit', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id: atlit[index].id })
+      })
+      refreshData()
+    },
+    onCancel() {}
+  });
+};
 
 
   const columns = [

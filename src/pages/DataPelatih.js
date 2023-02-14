@@ -85,7 +85,10 @@ function DataPelatih({ pelatih,cabor }) {
     setVisible(false);
   };
 
-  const handleDelete = async (index) => {
+  const handleDelete = (index) => {
+    Modal.confirm({
+    title: 'Apakah anda yakin menghapus data pelatih ini?',
+    onOk: async () => {
     await fetch('/api/pelatih', {
       method: 'DELETE',
       headers: {
@@ -94,6 +97,8 @@ function DataPelatih({ pelatih,cabor }) {
       body: JSON.stringify({ id: pelatih[index].id })
     })
     refreshData()
+  }
+  })
   };
 
 

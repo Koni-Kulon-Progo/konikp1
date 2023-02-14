@@ -86,7 +86,10 @@ function DataWasit({ wasit,cabor }) {
     setVisible(false);
   };
 
-  const handleDelete = async (index) => {
+  const handleDelete = (index) => {
+    Modal.confirm({
+    title: 'Apakah anda yakin menghapus data wasit ini?',
+    onOk: async () => {
     await fetch('/api/wasit', {
       method: 'DELETE',
       headers: {
@@ -95,6 +98,8 @@ function DataWasit({ wasit,cabor }) {
       body: JSON.stringify({ id: wasit[index].id })
     })
     refreshData()
+  }
+  })
   };
 
 

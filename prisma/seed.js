@@ -53,7 +53,6 @@ async function main() {
     const pr = seedingData.map((data) => {
         return prisma.cabor.create({ data: data })
     })
-
     await Promise.all(pr)
 }
 

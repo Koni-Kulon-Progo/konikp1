@@ -24,9 +24,9 @@ export async function getServerSideProps() {
   return { 
     props: {
       wasit,
-      cabor: cabor.map(c => ({
-        label: c.nama,
-        value: c.id
+      cabor: cabor.map(cbr => ({
+        label: cbr.nama,
+        value: cbr.id
       }))
     }
   }
@@ -52,6 +52,7 @@ function DataWasit({ wasit,cabor }) {
 
   const handleSubmit = async () => {
     const values = await form.validateFields();
+    console.log(values)
     try {
       if(values.id){
         await fetch('/api/wasit', {
@@ -68,7 +69,7 @@ function DataWasit({ wasit,cabor }) {
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(values)
+          body: JSON.stringify({ ...values })
         })
       }
       
@@ -275,20 +276,21 @@ function DataWasit({ wasit,cabor }) {
           >
             <Input />
           </Form.Item>
-          <Form.Item>
+          <Form.Item
+          name="cabor_id">
           <Select
             showSearch
+            label="cabor"
             placeholder="Select a person"
             optionFilterProp="children"
             // onChange={onChange}
             // onSearch={onSearch}
             filterOption={(input, option) =>
-              (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+              (option?.cabor ?? '').toLowerCase().includes(input.toLowerCase())
             }
             options={cabor}
-  />
-
-            
+            rules={[{ required: true, message: 'Tolong Input Nama Cabor'}]}
+            />
           </Form.Item>
         </Form>
         

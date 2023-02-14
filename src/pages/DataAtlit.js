@@ -68,7 +68,7 @@ function DataAtlit({ atlit,cabor }) {
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ ...values, cabor_id: 8 })
+          body: JSON.stringify({ ...values })
         })
       }
       
@@ -263,7 +263,8 @@ function DataAtlit({ atlit,cabor }) {
           >
             <Input />
           </Form.Item>
-          <Form.Item>
+          <Form.Item
+          name="cabor_id">
           <Select
             showSearch
             placeholder="Select a person"

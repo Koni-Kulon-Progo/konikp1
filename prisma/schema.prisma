@@ -27,6 +27,7 @@ model Cabor {
   atlit       Atlit[]
   pelatih     Pelatih[]
   wasit       Wasit[]  
+  sarpras     Sarpras[] 
 }
 
 model Pelatih {
@@ -52,3 +53,13 @@ model Wasit {
   cabor_id    Int
   cabor       Cabor    @relation(fields: [cabor_id], references: [id])
 }
+
+
+model Sarpras {
+  id          Int   @id @default(autoincrement())
+  nama        String
+  keterangan  String
+  tahun       String
+  cabor_id    Int
+  cabor       String  @relation(fields: [cabor_id], references: [id])
+  }

@@ -62,7 +62,7 @@ function DataPelatih({ pelatih,cabor }) {
           body: JSON.stringify(values)
         })
         
-      }else{
+      }else {
         await fetch('/api/pelatih', {
           method: 'POST',
           headers: {
@@ -85,7 +85,10 @@ function DataPelatih({ pelatih,cabor }) {
     setVisible(false);
   };
 
-  const handleDelete = async (index) => {
+  const handleDelete = (index) => {
+    Modal.confirm({
+    title: 'Apakah anda yakin menghapus data pelatih ini?',
+    onOk: async () => {
     await fetch('/api/pelatih', {
       method: 'DELETE',
       headers: {
@@ -94,6 +97,8 @@ function DataPelatih({ pelatih,cabor }) {
       body: JSON.stringify({ id: pelatih[index].id })
     })
     refreshData()
+  }
+  })
   };
 
 
@@ -202,6 +207,13 @@ function DataPelatih({ pelatih,cabor }) {
                   icon: <UploadOutlined />,
                   label: (
                     <Link href="/DataAtlit">Data Atlit</Link>
+                  ),
+                },
+                {
+                  key: '4',
+                  icon: <UploadOutlined />,
+                  label: (
+                    <Link href="/DataSarpras">Data Sarpras</Link>
                   ),
                 },
       ]}

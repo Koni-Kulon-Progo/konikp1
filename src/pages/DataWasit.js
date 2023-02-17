@@ -4,6 +4,7 @@ import {
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
+  DiffOutlined
 } from '@ant-design/icons';
 import { Layout, Menu, Row, Col, Divider, Table, Form, Modal, Input, Button, Select} from 'antd';
 import React, { useState } from 'react';
@@ -209,6 +210,13 @@ function DataWasit({ wasit,cabor }) {
                   icon: <UploadOutlined />,
                   label: (
                     <Link href="/DataAtlit">Data Atlit</Link>
+                  ),
+                },
+                {
+                  key: '4',
+                  icon: <DiffOutlined />,
+                  label: (
+                    <Link href="/DataSarpras">Data Sarpras</Link>
                   ),
                 },
       ]}

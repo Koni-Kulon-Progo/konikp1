@@ -4,6 +4,7 @@ import {
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
+  DiffOutlined
 } from '@ant-design/icons';
 import { Layout, Menu, Row, Col, Divider, Table, Form, Modal, Input, Button, Select} from 'antd';
 import React, { useState } from 'react';
@@ -211,7 +212,7 @@ function DataPelatih({ pelatih,cabor }) {
                 },
                 {
                   key: '4',
-                  icon: <UploadOutlined />,
+                  icon: <DiffOutlined />,
                   label: (
                     <Link href="/DataSarpras">Data Sarpras</Link>
                   ),

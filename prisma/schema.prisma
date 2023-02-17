@@ -61,5 +61,5 @@ model Sarpras {
   keterangan  String
   tahun       String
   cabor_id    Int
-  cabor       String  @relation(fields: [cabor_id], references: [id])
+  cabor       Cabor  @relation(fields: [cabor_id], references: [id])
   }

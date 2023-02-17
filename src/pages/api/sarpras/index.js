@@ -1,4 +1,4 @@
-import prisma from '../../utils/prisma'
+import prisma from '../../../utils/prisma'
 
 async function createSarpras(body, res) {
     const create = await prisma.sarpras.create({
@@ -21,7 +21,6 @@ async function deleteSarpras(body, res) {
     })
     return res.status(200).send({ message: 'sukses hapus sarpras' })
 }
-
 
 
 export default async function handler(req, res) {

@@ -12,6 +12,7 @@
     "seed": "node prisma/seed.js"
   },
   "dependencies": {
+    "@01group/fxl": "^0.0.7",
     "@ant-design/icons": "^5.0.1",
     "@next/font": "13.1.6",
     "@prisma/client": "^4.10.1",

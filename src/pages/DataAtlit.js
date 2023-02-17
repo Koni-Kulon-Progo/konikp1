@@ -1,5 +1,5 @@
 import {
-  MenuFoldOutlined,
+  DiffOutlined,
   DeleteOutlined,
   UploadOutlined,
   UserOutlined,
@@ -203,6 +203,13 @@ const handleDelete = (index) => {
                   icon: <UploadOutlined />,
                   label: (
                     <Link href="/DataAtlit">Data Atlit</Link>
+                  ),
+                },
+                {
+                  key: '4',
+                  icon: <DiffOutlined />,
+                  label: (
+                    <Link href="/DataSarpras">Data Sarpras</Link>
                   ),
                 },
       ]}

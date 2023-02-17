@@ -4,6 +4,7 @@ import {
     UploadOutlined,
     UserOutlined,
     VideoCameraOutlined,
+    DiffOutlined 
   } from '@ant-design/icons';
   import { Layout, Menu, Row, Col, Divider, Table, Form, Modal, Input, Button, Select} from 'antd';
   import React, { useState } from 'react';
@@ -121,7 +122,7 @@ import {
         key: '2',
       },
       {
-        title: 'Tahun',
+        title: 'Tahun Perolehan',
         dataIndex: 'tahun',
         key: '3',
       },
@@ -158,6 +159,17 @@ import {
       }
     }): [];
   
+    async function handleDownloadFile() {
+      const res = await fetch('/api/sarpras/download', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      })
+      const blob = await res.blob();
+      const file = window.URL.createObjectURL(blob);
+      window.location.assign(file);
+    }
     
     
   
@@ -193,7 +205,7 @@ import {
                   },
                   {
                     key: '4',
-                    icon: <UploadOutlined />,
+                    icon: <DiffOutlined />,
                     label: (
                       <Link href="/DataSarpras">Data Sarpras</Link>
                     ),
@@ -202,8 +214,11 @@ import {
             />
           </Sider>
           <div>
-            <h1>DATA PELATIH KONI KP</h1>
+            <h1>DATA SARPRAS KONI KP</h1>
+            <div style={{ display: 'flex', justifyContent: 'space-between',marginBottom: "20px" }}>
+            <Button type='primary' onClick={() => handleDownloadFile()}> Download File</Button>
             <Button type='primary' onClick={() => setVisible(true)}>+ Data</Button>
+            </div>
           <Table
             columns={columns}
             dataSource={data}
@@ -218,7 +233,7 @@ import {
           onCancel={handleCancel}
           destroyOnClose={true}
         >
-          <Form preserve={false} form={form} initialValues={currentIndex === null ? {} : pelatih[currentIndex]}>
+          <Form preserve={false} form={form} initialValues={currentIndex === null ? {} : sarpras[currentIndex]}>
             <Form.Item
               label="ID"
               hidden={true}
@@ -231,13 +246,6 @@ import {
               label="Nama Barang"
               name="nama"
               rules={[{ required: true, message: 'Tolong Input Nama Barang !' }]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              label="Cabor"
-              name="cabor"
-              rules={[{ required: true, message: 'Tolong Input Cabor !' }]}
             >
               <Input />
             </Form.Item>
@@ -267,9 +275,7 @@ import {
                 (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
               }
               options={cabor}
-    />
-  
-              
+    />  
             </Form.Item>
           </Form>
           

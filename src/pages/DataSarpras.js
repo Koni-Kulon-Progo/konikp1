@@ -158,6 +158,15 @@ import {
         keterangan: item.keterangan
       }
     }): [];
+
+    const handleConfirmDownload = () => {
+      Modal.confirm({
+        title: 'Apakah Anda yakin ingin mengunduh file ini?',
+        okText: 'Ya',
+        cancelText: 'Batal',
+        onOk: handleDownloadFile,
+      })
+    }
   
     async function handleDownloadFile() {
       const res = await fetch('/api/sarpras/download', {
@@ -166,6 +175,7 @@ import {
           'Content-Type': 'application/json'
         },
       })
+
       const blob = await res.blob();
       const file = window.URL.createObjectURL(blob);
       window.location.assign(file);
@@ -216,7 +226,7 @@ import {
           <div>
             <h1>DATA SARPRAS KONI KP</h1>
             <div style={{ display: 'flex', justifyContent: 'space-between',marginBottom: "20px" }}>
-            <Button type='primary' onClick={() => handleDownloadFile()}> Download File</Button>
+            {/* <Button type='primary' onClick={handleConfirmDownload}> Download File</Button> */}
             <Button type='primary' onClick={() => setVisible(true)}>+ Data</Button>
             </div>
           <Table

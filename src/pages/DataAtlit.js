@@ -4,48 +4,48 @@ import {
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
-} from '@ant-design/icons';
-import { Layout, Menu, Table, Form, Modal, Input, Button, Select} from 'antd';
-import React, { useState } from 'react';
-import Link from 'next/link'
-import prisma from '@/utils/prisma';
-import { useRouter } from 'next/router'
+} from "@ant-design/icons";
+import { Layout, Menu, Table, Form, Modal, Input, Button, Select } from "antd";
+import React, { useState } from "react";
+import Link from "next/link";
+import prisma from "@/utils/prisma";
+import { useRouter } from "next/router";
 
 const { Header, Sider, Content } = Layout;
 
 export async function getServerSideProps() {
-  const cabor = await prisma.cabor.findMany()
+  const cabor = await prisma.cabor.findMany();
   const atlit = await prisma.atlit.findMany({
     include: {
       cabor: true,
-    }
-  })
+    },
+  });
 
-  return { 
+  return {
     props: {
       atlit,
-      cabor: cabor.map(c => ({
+      cabor: cabor.map((c) => ({
         label: c.nama,
-        value: c.id
-      }))
-    }
-  }
+        value: c.id,
+      })),
+    },
+  };
 }
 
-function DataAtlit({ atlit,cabor }) {
+function DataAtlit({ atlit, cabor }) {
   const [collapsed, setCollapsed] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
 
   //  edit
   const [visible, setVisible] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(null);
 
   const refreshData = () => {
-    router.replace(router.asPath)
-  }
+    router.replace(router.asPath);
+  };
 
   const handleEdit = (index) => {
-    form.resetFields()
+    form.resetFields();
     setCurrentIndex(index);
     setVisible(true);
   };
@@ -53,254 +53,267 @@ function DataAtlit({ atlit,cabor }) {
   const handleSubmit = async () => {
     const values = await form.validateFields();
     try {
-      if(values.id){
-        await fetch('/api/atlit', {
-          method: 'PUT',
+      if (values.id) {
+        await fetch("/api/atlit", {
+          method: "PUT",
           headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify(values)
-        })
-        
-      }else{
-        await fetch('/api/atlit', {
-          method: 'POST',
+          body: JSON.stringify(values),
+        });
+      } else {
+        await fetch("/api/atlit", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify({ ...values })
-        })
+          body: JSON.stringify({ ...values }),
+        });
       }
-      
-      form.resetFields()
+
+      form.resetFields();
       setVisible(false);
-      refreshData()
+      refreshData();
     } catch (error) {
       console.error(error);
-    }};
+    }
+  };
 
   const handleCancel = () => {
-    form.resetFields()
+    form.resetFields();
     setCurrentIndex(null);
     setVisible(false);
   };
 
-const handleDelete = (index) => {
-  Modal.confirm({
-    title: 'Apakah anda yakin menghapus data atlit ini?',
-    onOk: async () => {
-      await fetch('/api/atlit', {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ id: atlit[index].id })
-      })
-      refreshData()
-    },
-    onCancel() {}
-  });
-};
-
+  const handleDelete = (index) => {
+    Modal.confirm({
+      title: "Apakah anda yakin menghapus data atlit ini?",
+      onOk: async () => {
+        await fetch("/api/atlit", {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id: atlit[index].id }),
+        });
+        refreshData();
+      },
+      onCancel() {},
+    });
+  };
 
   const columns = [
     {
-      title: 'No',
+      title: "No",
       width: 100,
-      dataIndex: 'key',
-      key: 'name',
-      fixed: 'left',
+      dataIndex: "key",
+      key: "name",
+      fixed: "left",
     },
     {
-      title: 'Nama Lengkap',
-      dataIndex: 'name',
-      key: '1',
+      title: "Nama Lengkap",
+      dataIndex: "name",
+      key: "1",
     },
     {
-      title: 'TTL',
-      dataIndex: 'ttl',
-      key: '2',
+      title: "TTL",
+      dataIndex: "ttl",
+      key: "2",
     },
     {
-      title: 'Alamat',
-      dataIndex: 'alamat',
-      key: '3',
+      title: "Alamat",
+      dataIndex: "alamat",
+      key: "3",
     },
     {
-      title: 'Telephone',
-      dataIndex: 'telephone',
-      key: '4',
+      title: "Telephone",
+      dataIndex: "telephone",
+      key: "4",
     },
     {
-      title: 'Gender',
-      dataIndex: 'gender',
-      key: '5',
+      title: "Gender",
+      dataIndex: "gender",
+      key: "5",
     },
     {
-      title: 'Cabor',
-      dataIndex: 'cabor',
-      key: '6',
-    },
-    {
-      title: 'Action',
-      key: 'operation',
-      fixed: 'right',
-      width: 100,
-      render: (text,record,index) => <Button type='primary' onClick={() => handleEdit(index)}>Edit</Button>,
+      title: "Cabor",
+      dataIndex: "cabor",
+      key: "6",
     },
     {
       title: "Action",
-      key: 'operation',
-      fixed: 'right',
+      key: "operation",
+      fixed: "right",
       width: 100,
-      render: (text,record,index) => <Button type='primary' danger onClick={() => handleDelete(index)}><DeleteOutlined /></Button>,
-    }
+      render: (text, record, index) => (
+        <Button type="primary" onClick={() => handleEdit(index)}>
+          Edit
+        </Button>
+      ),
+    },
+    {
+      title: "Action",
+      key: "operation",
+      fixed: "right",
+      width: 100,
+      render: (text, record, index) => (
+        <Button type="primary" danger onClick={() => handleDelete(index)}>
+          <DeleteOutlined />
+        </Button>
+      ),
+    },
   ];
 
   const [form] = Form.useForm();
 
-  const data = atlit ? atlit.map((item, index) => {
-    return {
-      key: index + 1, 
-      name: item.nama,
-      ttl: item.ttl,
-      alamat: item.alamat,
-      telephone: item.telephone,
-      gender: item.gender,
-      cabor: item.cabor.nama
-    }
-  }): [];
-
-  
-  
+  const data = atlit
+    ? atlit.map((item, index) => {
+        return {
+          key: index + 1,
+          name: item.nama,
+          ttl: item.ttl,
+          alamat: item.alamat,
+          telephone: item.telephone,
+          gender: item.gender,
+          cabor: item.cabor.nama,
+        };
+      })
+    : [];
 
   return (
     <>
-    <Layout className="layout">
+      <Layout className="layout">
         <Sider trigger={null} collapsible collapsed={collapsed}>
-          
           <DeleteOutlined />
           <Menu
-              theme="dark"
-              mode="inline"
-              items={[
-                {
-                  key: '1',
-                  icon: <UserOutlined />,
-                  label: (
-                    <Link href="/DataWasit">Data Wasit</Link>
-                  ),
-                },
-                {
-                  key: '2',
-                  icon: <VideoCameraOutlined />,
-                  label: (
-                    <Link href="/DataPelatih">Data Pelatih</Link>
-                  ),
-                },
-                {
-                  key: '3',
-                  icon: <UploadOutlined />,
-                  label: (
-                    <Link href="/DataAtlit">Data Atlit</Link>
-                  ),
-                },
-                {
-                  key: '4',
-                  icon: <DiffOutlined />,
-                  label: (
-                    <Link href="/DataSarpras">Data Sarpras</Link>
-                  ),
-                },
-      ]}
+            theme="dark"
+            mode="inline"
+            items={[
+              {
+                key: "1",
+                icon: <UserOutlined />,
+                label: <Link href="/DataWasit">Data Wasit</Link>,
+              },
+              {
+                key: "2",
+                icon: <VideoCameraOutlined />,
+                label: <Link href="/DataPelatih">Data Pelatih</Link>,
+              },
+              {
+                key: "3",
+                icon: <UploadOutlined />,
+                label: <Link href="/DataAtlit">Data Atlit</Link>,
+              },
+              {
+                key: "4",
+                icon: <DiffOutlined />,
+                label: <Link href="/DataSarpras">Data Sarpras</Link>,
+              },
+            ]}
           />
         </Sider>
         <div>
           <h1>DATA ATLIT KONI KP</h1>
-          <Button type='primary' onClick={() => setVisible(true)}>+ Data</Button>
-        <Table
-          columns={columns}
-          dataSource={data}
-          scroll={{
-            x: 1700,
-          }}
-        />
-      <Modal
-        title="Edit Data Atlit"
-        open={visible}
-        onOk={handleSubmit}
-        onCancel={handleCancel}
-        destroyOnClose={true}
-      >
-        <Form preserve={false} form={form} initialValues={currentIndex === null ? {} : atlit[currentIndex]}>
-          <Form.Item
-            label="ID"
-            hidden={true}
-            name="id"
-            rules={[{ required: false,}]}
+          <Button type="primary" onClick={() => setVisible(true)}>
+            + Data
+          </Button>
+          <Table
+            columns={columns}
+            dataSource={data}
+            scroll={{
+              x: 1700,
+            }}
+          />
+          <Modal
+            title="Edit Data Atlit"
+            open={visible}
+            onOk={handleSubmit}
+            onCancel={handleCancel}
+            destroyOnClose={true}
           >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Nama Lengkap"
-            name="nama"
-            rules={[{ required: true, message: 'Tolong Input Nama lengkap!' }]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="TTL"
-            name="ttl"
-            rules={[{ required: true, message: 'Tolong Input Tempat Tanggal Lahir!' }]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Alamat"
-            name="alamat"
-            rules={[{ required: true, message: 'Tolong Input Alamat!' }]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Telephone"
-            name="telephone"
-            rules={[{ required: true, message: 'Tolong Input Nomer Yang Bisa Dihubungi!' }]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Gender"
-            name="gender"
-            rules={[{ required: true, message: 'Tolong Input Jenis Kelamin!' }]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-          name="cabor_id">
-          <Select
-            showSearch
-            placeholder="Select a person"
-            optionFilterProp="children"
-            // onChange={onChange}
-            // onSearch={onSearch}
-            filterOption={(input, option) =>
-              (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-            }
-            options={cabor}
-  />
-
-            
-          </Form.Item>
-        </Form>
-        
-      </Modal>
+            <Form
+              preserve={false}
+              form={form}
+              initialValues={currentIndex === null ? {} : atlit[currentIndex]}
+            >
+              <Form.Item
+                label="ID"
+                hidden={true}
+                name="id"
+                rules={[{ required: false }]}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item
+                label="Nama Lengkap"
+                name="nama"
+                rules={[
+                  { required: true, message: "Tolong Input Nama lengkap!" },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item
+                label="TTL"
+                name="ttl"
+                rules={[
+                  {
+                    required: true,
+                    message: "Tolong Input Tempat Tanggal Lahir!",
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item
+                label="Alamat"
+                name="alamat"
+                rules={[{ required: true, message: "Tolong Input Alamat!" }]}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item
+                label="Telephone"
+                name="telephone"
+                rules={[
+                  {
+                    required: true,
+                    message: "Tolong Input Nomer Yang Bisa Dihubungi!",
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item
+                label="Gender"
+                name="gender"
+                rules={[
+                  { required: true, message: "Tolong Input Jenis Kelamin!" },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item name="cabor_id">
+                <Select
+                  showSearch
+                  placeholder="Select a person"
+                  optionFilterProp="children"
+                  // onChange={onChange}
+                  // onSearch={onSearch}
+                  filterOption={(input, option) =>
+                    (option?.label ?? "")
+                      .toLowerCase()
+                      .includes(input.toLowerCase())
+                  }
+                  options={cabor}
+                />
+              </Form.Item>
+            </Form>
+          </Modal>
         </div>
-              
-        </Layout>
+      </Layout>
     </>
-    
-  )
+  );
 }
 
-export default DataAtlit
+export default DataAtlit;

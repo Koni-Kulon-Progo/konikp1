@@ -5,61 +5,60 @@ generator client {
   provider = "prisma-client-js"
 }
 
-datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+datasource db_dev {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Atlit {
-  id          Int    @id @default(autoincrement())
-  nama        String
-  alamat      String
-  ttl         String
-  telephone   String
-  gender      String
-  cabor_id    Int
-  cabor       Cabor    @relation(fields: [cabor_id], references: [id])
+  id        Int    @id @default(autoincrement())
+  nama      String
+  alamat    String
+  ttl       String
+  telephone String
+  gender    String
+  cabor_id  Int
+  cabor     Cabor  @relation(fields: [cabor_id], references: [id])
 }
 
 model Cabor {
-  id          Int     @id @default(autoincrement())
-  nama        String
-  atlit       Atlit[]
-  pelatih     Pelatih[]
-  wasit       Wasit[]  
-  sarpras     Sarpras[] 
+  id      Int       @id @default(autoincrement())
+  nama    String
+  atlit   Atlit[]
+  pelatih Pelatih[]
+  wasit   Wasit[]
+  sarpras Sarpras[]
 }
 
 model Pelatih {
-  id          Int   @id @default(autoincrement())
-  nama        String
-  alamat      String
-  ttl         String
-  telephone   String
-  gender      String
-  keterangan  String
-  cabor_id    Int
-  cabor       Cabor    @relation(fields: [cabor_id], references: [id])
+  id         Int    @id @default(autoincrement())
+  nama       String
+  alamat     String
+  ttl        String
+  telephone  String
+  gender     String
+  keterangan String
+  cabor_id   Int
+  cabor      Cabor  @relation(fields: [cabor_id], references: [id])
 }
 
 model Wasit {
-  id          Int   @id @default(autoincrement())
-  nama        String
-  alamat      String
-  ttl         String
-  telephone   String
-  gender      String
-  keterangan  String
-  cabor_id    Int
-  cabor       Cabor    @relation(fields: [cabor_id], references: [id])
+  id         Int    @id @default(autoincrement())
+  nama       String
+  alamat     String
+  ttl        String
+  telephone  String
+  gender     String
+  keterangan String
+  cabor_id   Int
+  cabor      Cabor  @relation(fields: [cabor_id], references: [id])
 }
 
-
 model Sarpras {
-  id          Int   @id @default(autoincrement())
-  nama        String
-  keterangan  String
-  tahun       String
-  cabor_id    Int
-  cabor       Cabor  @relation(fields: [cabor_id], references: [id])
-  }
+  id         Int    @id @default(autoincrement())
+  nama       String
+  keterangan String
+  tahun      String
+  cabor_id   Int
+  cabor      Cabor  @relation(fields: [cabor_id], references: [id])
+}

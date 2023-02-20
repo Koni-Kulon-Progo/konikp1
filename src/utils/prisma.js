@@ -5,14 +5,7 @@ let prisma;
 
 if (typeof window === "undefined") {
   if (process.env.NODE_ENV === "production") {
-    prisma = new PrismaClient({
-      datasources: {
-        db: {
-          provider: "postgresql",
-          url: process.env.DATABASE_URL,
-        },
-      },
-    });
+    prisma = new PrismaClient();
   } else {
     if (!global.prisma) {
       global.prisma = new PrismaClient({});

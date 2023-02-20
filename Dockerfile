@@ -1,13 +1,10 @@
 # Install dependencies only when needed
 FROM node:16-alpine AS builder
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache libc6-compat dumb-init
 WORKDIR /app
 COPY . .
-RUN yarn install --frozen-lockfile
-
-# If using npm with a `package-lock.json` comment out above and use below instead
-# RUN npm ci
+RUN npm ci
 
 ENV NEXT_TELEMETRY_DISABLED 1
 
@@ -16,10 +13,8 @@ ENV NEXT_TELEMETRY_DISABLED 1
 # Example:
 # ARG NEXT_PUBLIC_EXAMPLE="value here"
 
-RUN yarn build
-
 # If using npm comment out above and use below instead
-# RUN npm run build
+RUN npm run build
 
 # Production image, copy all the files and run next
 FROM node:16-alpine AS runner
@@ -35,7 +30,4 @@ COPY --from=builder /app ./
 
 USER nextjs
 
-CMD ["yarn", "start"]
-
-# If using npm comment out above and use below instead
-# CMD ["npm", "run", "start"]
+CMD ["dumb-init", "npm", "run", "start"]

@@ -30,6 +30,7 @@ $ npx prisma db seed
 To run the application on local, run :
 
 ```bash
+$ npm install
 $ npm run dev
 ```
 

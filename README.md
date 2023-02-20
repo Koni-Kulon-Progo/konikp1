@@ -21,8 +21,16 @@ Running the database migration
 $ npx prisma migrate dev
 ```
 
+Seed the database
+
+```bash
+$ npx prisma db seed
+```
+
 To run the application on local, run :
 
 ```bash
 $ npm run dev
 ```
+
+

@@ -5,9 +5,18 @@ import {
   UserOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
-import { Layout, Menu , Button, Row, Col, Typography,} from 'antd';
+import {
+  blue
+} from "@ant-design/colors"
+import Image from 'next/image'
+
+
+import { Layout, Menu , Button, Row, Col, Typography,Card} from 'antd';
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Navbar from '../components/Navbar'
+import Content from '../components/Content';
+import Footer from '../components/Footer';
 
 export default function Home() {
   // const {h1} = Typography;
@@ -15,12 +24,9 @@ export default function Home() {
   return (
     <>
       <Row>
-        <Col span={12}>
-          <h1 align="center">iki logo koni</h1>
-        </Col>
-        <Col span={12} align="center">
-          <Button>Dashboard</Button>
-        </Col>
+        <Navbar />
+        <Content />
+        <Footer />
       </Row>
     </>
   )

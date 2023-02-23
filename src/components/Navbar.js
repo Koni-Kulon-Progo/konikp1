@@ -3,19 +3,48 @@ import { Layout, Menu , Button, Row, Col, Typography,Card} from 'antd';
 import Link from "next/link";
 import Image from "next/image";
 import LogoKoni from '../assets/koni.jpg'
+const { Header } = Layout;
+const { Title } = Typography;
 
 function Navbar() {
   return <>
-  <Col span={12}>
-  <Image
-    width={50}
-    src={LogoKoni}
-  />
+   <Header style={{  position: 'fixed', zIndex: 1, width: '100%' }}>
+      <Row justify="space-between" align="middle">
+        <Col>
+          <Image src={LogoKoni} alt="Logo KONI" width={60} height={60} />
         </Col>
-        <Col span={12} align="end">
-          <Button danger><Link href="/DataAtlit">Dashboard</Link></Button>
+        <Col>
+          <Title level={2} style={{ color: '#000', marginBottom: 0 }}>
+            KONI KULON PROGO
+          </Title>
+          <Title level={5} style={{ color: '#000', marginTop: 0 ,textAlign:"center"}}>
+            Komite Olahraga Nasional Indonesia
+          </Title>
         </Col>
-    
+        <Col>
+          <Link href="/DataAtlit">
+            <Button type="primary">Dashboard</Button>
+          </Link>
+        </Col>
+      </Row>
+      <Menu theme="dark" mode="horizontal" style={{ display: 'flex', justifyContent: 'center' }}>
+        <Menu.Item key="home">
+          <Link href="/">
+            <h4>Home</h4>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="visimisi">
+          <Link href="/VisiMisi">
+            <h4>Visi & Misi</h4>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="news">
+          <Link href="/News">
+            <h4>News & Event</h4>
+          </Link>
+        </Menu.Item>
+      </Menu>
+    </Header>
   </>;
 }
 

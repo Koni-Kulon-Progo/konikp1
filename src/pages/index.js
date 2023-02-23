@@ -27,7 +27,7 @@ export default function Home() {
         <Navbar />
         <Row>
     <Col span={24}>
-          <div style={{ display: 'flex', justifyContent: 'center',marginTop: '200px' }}>
+          <div style={{ display: 'flex', justifyContent: 'center',marginTop: '30px' }}>
             <Image src={LogoStruktur} width={290} alt="struktur koni"  />
           </div>
             <h1 align="center">Selayang Pandang</h1>

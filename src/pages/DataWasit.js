@@ -4,7 +4,8 @@ import {
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
-  DiffOutlined
+  DiffOutlined,
+  HomeOutlined,
 } from '@ant-design/icons';
 import { Layout, Menu, Row, Col, Divider, Table, Form, Modal, Input, Button, Select} from 'antd';
 import React, { useState } from 'react';
@@ -186,7 +187,9 @@ function DataWasit({ wasit,cabor }) {
     <>
     <Layout className="layout">
         <Sider trigger={null} collapsible collapsed={collapsed}>
-          <div className="logo" />
+        <div className="logo">
+            <h2 align="center">KONI KP</h2>
+          </div>
           <Menu
               theme="dark"
               mode="inline"
@@ -218,6 +221,11 @@ function DataWasit({ wasit,cabor }) {
                   label: (
                     <Link href="/DataSarpras">Data Sarpras</Link>
                   ),
+                },
+                {
+                  key: "5",
+                  icon: <HomeOutlined />,
+                  label: <Link href="/">Home</Link>,
                 },
       ]}
           />

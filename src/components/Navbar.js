@@ -8,7 +8,7 @@ const { Title } = Typography;
 
 function Navbar() {
   return <>
-   <Header style={{  position: 'fixed', zIndex: 1, width: '100%' }}>
+   <Header style={{  zIndex: 1, width: '100%' }}>
       <Row justify="space-between" align="middle">
         <Col>
           <Image src={LogoKoni} alt="Logo KONI" width={60} height={60} />
@@ -41,6 +41,11 @@ function Navbar() {
         <Menu.Item key="news">
           <Link href="/News">
             <h4>News & Event</h4>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="contact">
+          <Link href="/News">
+            <h4>Contact</h4>
           </Link>
         </Menu.Item>
       </Menu>

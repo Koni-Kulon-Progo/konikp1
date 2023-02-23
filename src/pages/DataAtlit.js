@@ -4,6 +4,7 @@ import {
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
+  HomeOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Table, Form, Modal, Input, Button, Select } from "antd";
 import React, { useState } from "react";
@@ -184,6 +185,9 @@ function DataAtlit({ atlit, cabor }) {
     <>
       <Layout className="layout">
         <Sider trigger={null} collapsible collapsed={collapsed}>
+        <div className="logo">
+            <h2 align="center">KONI KP</h2>
+          </div>
           <DeleteOutlined />
           <Menu
             theme="dark"
@@ -208,6 +212,11 @@ function DataAtlit({ atlit, cabor }) {
                 key: "4",
                 icon: <DiffOutlined />,
                 label: <Link href="/DataSarpras">Data Sarpras</Link>,
+              },
+              {
+                key: "5",
+                icon: <HomeOutlined />,
+                label: <Link href="/">Home</Link>,
               },
             ]}
           />
@@ -311,6 +320,7 @@ function DataAtlit({ atlit, cabor }) {
             </Form>
           </Modal>
         </div>
+        
       </Layout>
     </>
   );

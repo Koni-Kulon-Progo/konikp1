@@ -12,7 +12,7 @@ function News() {
         <Navbar />
         <Row>
     <Col span={24}>
-          <div style={{ display: 'flex', justifyContent: 'center',marginTop: '200px' }}>
+          <div style={{ display: 'flex', justifyContent: 'center',marginTop: '30px' }}>
           <Image src={LogoNews} width={400} />
           </div>
             <h1 align="center">News & Event</h1>
@@ -26,6 +26,14 @@ function News() {
             <h2>IKI JUDULE</h2>
             <p>IKI tanggal</p>
             <h3>IKI ISINE</h3>
+        </Col>
+        <Col span={12} align="center" style={{marginTop: "200px"}}>
+            <h2>IKI JUDULE</h2>
+            <p>IKI tanggal</p>
+            <h3>IKI ISINE</h3>
+        </Col>
+        <Col span={12} align="center" style={{marginTop: "200px"}}>
+        <Image src={LogoNews} width={290} alt="gambar porda"/>
         </Col>
     </Row>
         <Footer />

@@ -32,3 +32,10 @@ body {
 .container-table {
   text-align: center;
 }
+
+
+.backgrounde {
+  background-image: url(../assets/cangkring.webp);
+  background-size: cover;
+  height: 1000px;
+}

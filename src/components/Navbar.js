@@ -27,7 +27,7 @@ function Navbar() {
         </Col>
         <Col>
           <Link href="/DataAtlit">
-            <Button type="primary" onClick={clickHandle}>Dashboard</Button>
+            <Button type="primary" onClick={clickHandle} id="btn-navbar">Dashboard</Button>
           </Link>
         </Col>
       </Row>

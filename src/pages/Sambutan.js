@@ -12,7 +12,11 @@ function Sambutan() {
     <Row>
       <Col span={24}>
         <h1 align="center">Sambutan Ketua Umum</h1>
-        <col></col>
+        <Row>
+          <Col span={8}>1</Col>
+          <Col span={8}>2</Col>
+          <Col span={8}>3</Col>
+        </Row>
       </Col>
     </Row>
     </>

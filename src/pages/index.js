@@ -29,11 +29,11 @@ export default function Home() {
             <Col span={8} align="center">
               
             </Col>
-            <Col span={8} align="start" style={{ marginTop: "200px"}}>
-            <h3>INFORMASI PRESTASI & INDUSTRI OLAHRAGA</h3>
-            <h1 style={{color: "red", fontSize: "46px"}}>KOMITE <br />OLAHRAGA<br />NASIONAL<br />INDONESIA</h1>
+            <Col span={8} align="start" style={{ marginTop: "50px"}}>
+            <h3 style={{ fontSize: "30px"}}>INFORMASI PRESTASI & INDUSTRI OLAHRAGA</h3>
+            <h1 style={{color: "red", fontSize: "60px"}}>KOMITE <br />OLAHRAGA<br />NASIONAL<br />INDONESIA</h1>
             <h2 style={{textAlign: "justify"}}>Komite Olahraga Nasional Indonesia (KONI) adalah satu-satunya organisasi yang berwenang dan bertanggung jawab mengelola, membina, mengembangkan & mengkoordinasikan seluruh pelaksanaan kegiatan olahraga prestasi setiap anggota di Indonesia.</h2>
-            <Button style={{backgroundColor: "red", color: "white"}}>LEBIH LANJUT</Button>
+            <Link href="/Sambutan"><Button style={{backgroundColor: "red", color: "white"}} id="buttonIndex">LEBIH LANJUT</Button></Link>
             </Col>
             <Col span={8} align="center"></Col>
           </div>

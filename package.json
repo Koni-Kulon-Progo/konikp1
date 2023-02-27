@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cypress:open": "cypress open"
   },
   "prisma": {
     "seed": "node prisma/seed.js"
@@ -26,6 +27,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "cypress": "^12.7.0",
     "prisma": "^4.10.1"
   }
 }

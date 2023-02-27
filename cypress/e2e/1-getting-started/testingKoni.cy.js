@@ -1,4 +1,4 @@
-describe('TESTING KONI', () => {
+describe('TESTING KONI HOMEPAGE', () => {
     beforeEach(() => {
         cy.visit('http://localhost:3000/')
       })
@@ -20,3 +20,4 @@ describe('TESTING KONI', () => {
 
         cy.get('a[href="/News"').click()
     })
+})

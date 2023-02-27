@@ -137,14 +137,14 @@ import {
         key: 'operation',
         fixed: 'right',
         width: 100,
-        render: (text,record,index) => <Button type='primary' onClick={() => handleEdit(index)}>Edit</Button>,
+        render: (text,record,index) => <Button type='primary' onClick={() => handleEdit(index)} id="btn_sarpras">Edit</Button>,
       },
       {
         title: "Action",
         key: 'operation',
         fixed: 'right',
         width: 100,
-        render: (text,record,index) => <Button type='primary' danger onClick={() => handleDelete(index)}>Delete</Button>,
+        render: (text,record,index) => <Button type='primary' danger onClick={() => handleDelete(index)} id="btn_sarprass">Delete</Button>,
       }
     ];
   
@@ -224,8 +224,8 @@ import {
           <div>
             <h1>DATA SARPRAS KONI KP</h1>
             <div style={{ display: 'flex', justifyContent: 'space-between',marginBottom: "20px" }}>
-            <Button type='primary' onClick={() => handleDownloadFile()}> Download File</Button>
-            <Button type='primary' onClick={() => setVisible(true)}>+ Data</Button>
+            <Button type='primary' onClick={() => handleDownloadFile()} id="btn_sarpras1"> Download File</Button>
+            <Button type='primary' onClick={() => setVisible(true)} id="btn_sarpras12">+ Data</Button>
             </div>
           <Table
             columns={columns}

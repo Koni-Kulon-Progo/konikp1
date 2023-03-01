@@ -1,3 +1,4 @@
+
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -152,14 +153,14 @@ function DataPelatih({ pelatih,cabor }) {
       key: 'operation',
       fixed: 'right',
       width: 100,
-      render: (text,record,index) => <Button type='primary' onClick={() => handleEdit(index)}>Edit</Button>,
+      render: (text,record,index) => <Button type='primary' onClick={() => handleEdit(index)} id="btnPelatih">Edit</Button>,
     },
     {
       title: "Action",
       key: 'operation',
       fixed: 'right',
       width: 100,
-      render: (text,record,index) => <Button type='primary' danger onClick={() => handleDelete(index)}>Delete</Button>,
+      render: (text,record,index) => <Button type='primary' danger onClick={() => handleDelete(index)} id="btn_pelatih">Delete</Button>,
     }
   ];
 
@@ -230,7 +231,7 @@ function DataPelatih({ pelatih,cabor }) {
         </Sider>
         <div>
           <h1>DATA PELATIH KONI KP</h1>
-          <Button type='primary' onClick={() => setVisible(true)}>+ Data</Button>
+          <Button type='primary' onClick={() => setVisible(true)} id="btn_pelatihhhh">+ Data</Button>
         <Table
           columns={columns}
           dataSource={data}

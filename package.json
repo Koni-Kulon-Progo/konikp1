@@ -27,6 +27,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "cypress": "^12.7.0",
     "prisma": "^4.10.1"
   }
 }

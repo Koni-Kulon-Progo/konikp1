@@ -147,7 +147,7 @@ function DataAtlit({ atlit, cabor }) {
       fixed: "right",
       width: 100,
       render: (text, record, index) => (
-        <Button type="primary" onClick={() => handleEdit(index)}>
+        <Button type="primary" onClick={() => handleEdit(index)} id="mut">
           Edit
         </Button>
       ),
@@ -158,7 +158,7 @@ function DataAtlit({ atlit, cabor }) {
       fixed: "right",
       width: 100,
       render: (text, record, index) => (
-        <Button type="primary" danger onClick={() => handleDelete(index)}>
+        <Button type="primary" danger onClick={() => handleDelete(index)} id="mutbgt">
           <DeleteOutlined />
         </Button>
       ),
@@ -221,9 +221,15 @@ function DataAtlit({ atlit, cabor }) {
             ]}
           />
         </Sider>
+<<<<<<< HEAD
         <div style={{ backgroundColor: "black"}}>
           <h1 style={{ color: "white", textAlign: "center",}}>DATA ATLIT KONI KP</h1>
           <Button type="primary" onClick={() => setVisible(true)}>
+=======
+        <div>
+          <h1>DATA ATLIT KONI KP</h1>
+          <Button type="primary" onClick={() => setVisible(true)} id="mutbgttt">
+>>>>>>> 8dc6ccc108776582698c58a10da8f1fb61f1a693
             + Data
           </Button>
           <Table

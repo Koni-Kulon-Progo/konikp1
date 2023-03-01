@@ -154,14 +154,14 @@ function DataWasit({ wasit,cabor }) {
       key: 'operation',
       fixed: 'right',
       width: 100,
-      render: (text,record,index) => <Button type='primary' onClick={() => handleEdit(index)}>Edit</Button>,
+      render: (text,record,index) => <Button type='primary' onClick={() => handleEdit(index)} id="btn_wasit">Edit</Button>,
     },
     {
       title: "Action",
       key: 'operation',
       fixed: 'right',
       width: 100,
-      render: (text,record,index) => <Button type='primary' danger onClick={() => handleDelete(index)}>Delete</Button>,
+      render: (text,record,index) => <Button type='primary' danger onClick={() => handleDelete(index)} id="btn_wasit1">Delete</Button>,
     }
   ];
 
@@ -232,7 +232,7 @@ function DataWasit({ wasit,cabor }) {
         </Sider>
         <div>
           <h1>DATA WASIT KONI KP</h1>
-          <Button type='primary' onClick={() => setVisible(true)}>+ Data</Button>
+          <Button type='primary' onClick={() => setVisible(true)} id="btn_wasit12">+ Data</Button>
         <Table
           columns={columns}
           dataSource={data}

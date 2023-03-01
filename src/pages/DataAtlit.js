@@ -186,7 +186,7 @@ function DataAtlit({ atlit, cabor }) {
       <Layout className="layout">
         <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="logo">
-            <h2 align="center">KONI KP</h2>
+            <h2 align="center" >KONI KP</h2>
           </div>
           <DeleteOutlined />
           <Menu
@@ -221,8 +221,8 @@ function DataAtlit({ atlit, cabor }) {
             ]}
           />
         </Sider>
-        <div>
-          <h1>DATA ATLIT KONI KP</h1>
+        <div style={{ backgroundColor: "black"}}>
+          <h1 style={{ color: "white", textAlign: "center",}}>DATA ATLIT KONI KP</h1>
           <Button type="primary" onClick={() => setVisible(true)}>
             + Data
           </Button>

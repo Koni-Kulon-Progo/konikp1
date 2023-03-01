@@ -48,8 +48,8 @@ function Navbar() {
           </Link>
         </Menu.Item>
         <Menu.Item key="contact">
-          <Link href="#">
-            <h4>Contact</h4>
+          <Link href="/Medali">
+            <h4>Medali</h4>
           </Link>
         </Menu.Item>
       </Menu>

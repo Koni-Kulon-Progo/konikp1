@@ -302,13 +302,12 @@ function DataWasit({ wasit,cabor }) {
           name="cabor_id">
           <Select
             showSearch
-            label="cabor"
             placeholder="Select a person"
             optionFilterProp="children"
             // onChange={onChange}
             // onSearch={onSearch}
             filterOption={(input, option) =>
-              (option?.cabor ?? '').toLowerCase().includes(input.toLowerCase())
+              (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
             }
             options={cabor}
             rules={[{ required: true, message: 'Tolong Input Nama Cabor'}]}

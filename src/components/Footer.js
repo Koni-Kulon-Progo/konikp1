@@ -5,20 +5,19 @@ import { HomeOutlined,MobileOutlined,MailOutlined,WhatsAppOutlined } from '@ant-
 function Footer() {
   return (
     <>
-        <Col span={6} style={{backgroundColor: "transparent"}}>
+        <Col xs={{ span: 24 }} xl={{span : 6}}  style={{backgroundColor: "transparent"}}>
             <h4 align='center'><HomeOutlined /><br />
                 Jl. Kweni No.5, Turip, Ngestiharjo, Wates Kulonprogo, Yogyakarta
             </h4>
         </Col>
-        <Col span={6}>
+        <Col xs={{ span: 24 }} xl={{span : 6}} >
             <h4 align='center'><MobileOutlined /><br />(0274) 773094</h4>
         </Col>
-        <Col span={6} >
+        <Col xs={{ span: 24 }} xl={{span : 6}}  >
             <h4 align='center'><MailOutlined /><br />konikulonprogo@gmail.com</h4>
         </Col>
-        <Col span={6} >
-            <h4 align='center'><WhatsAppOutlined /><br />089727272736</h4>
-            
+        <Col xs={{ span: 24 }} xl={{span : 6}} >
+            <h4 align='center'><WhatsAppOutlined /><br />089727272736</h4>  
         </Col>
     </>
   )

@@ -20,6 +20,11 @@ export async function getServerSideProps() {
     include: {
       cabor: true,
     },
+    orderBy: {
+      cabor: {
+        nama: "asc"
+      }
+    }
   });
 
   return {

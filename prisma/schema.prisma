@@ -62,3 +62,9 @@ model Sarpras {
   cabor_id   Int
   cabor      Cabor  @relation(fields: [cabor_id], references: [id])
 }
+
+model User {
+  id          Int @id @default(autoincrement())
+  email       String
+  password    String
+}

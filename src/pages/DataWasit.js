@@ -20,6 +20,11 @@ export async function getServerSideProps() {
   const wasit = await prisma.wasit.findMany({
     include: {
       cabor: true,
+    },
+    orderBy: {
+      cabor: {
+        nama: "asc"
+      }
     }
   })
 

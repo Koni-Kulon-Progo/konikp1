@@ -20,6 +20,11 @@ import {
     const sarpras = await prisma.sarpras.findMany({
       include: {
         cabor: true,
+      },
+      orderBy: {
+        cabor: {
+          nama: "asc"
+        }
       }
     })
   

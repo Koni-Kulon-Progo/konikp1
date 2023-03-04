@@ -227,7 +227,7 @@ function DataAtlit({ atlit, cabor }) {
           />
         </Sider>
         <div style={ { backgroundColor: "black" }}>
-          <h1 align="center" style={{color: "white"}}>DATA ATLIT KONI KP</h1>
+          <h1 align="center" style={{color: "white",margin: "0 0 50px 0"}}>DATA ATLIT KONI KP</h1>
           <Button type="primary" onClick={() => setVisible(true)} id="mutbgttt">
             + Data
           </Button>

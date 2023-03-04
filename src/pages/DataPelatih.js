@@ -21,6 +21,11 @@ export async function getServerSideProps() {
   const pelatih = await prisma.pelatih.findMany({
     include: {
       cabor: true,
+    },
+    orderBy: {
+      cabor: {
+        nama: "asc"
+      }
     }
   })
 

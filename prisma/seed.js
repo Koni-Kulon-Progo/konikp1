@@ -78,9 +78,10 @@ async function main() {
       G: "cabor_id",
     }
   });
+
   await Promise.all(
-    normalizeAndConcat(coach).map((coach) =>
-      prisma.pelatih.create({ data: coach })
+    normalizeAndConcat(coach).map((coachs) =>
+      prisma.pelatih.create({ data: coachs })
     )
   );
 }

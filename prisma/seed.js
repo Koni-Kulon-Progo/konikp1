@@ -1,4 +1,5 @@
-import cabor from "./seed-data/cabor";
+const cabor = require("./seed-data/cabor");
+const atlitAnggar = require("./seed-data/anggar/atlitAnggar");
 // import atlitAnggar from "./anggar/atlitAnggar";
 // import pelatihAnggar from "./anggar/pelatihAnggar";
 // import wasitAnggar from "./anggar/wasitAnggar";
@@ -12,15 +13,10 @@ const prisma = new PrismaClient();
 async function main() {
   await Promise.all(cabor.map((data) => prisma.cabor.create({ data: data })));
 
-  // const aa = atlit.map((data) => {
-  //   return prisma.atlit.create({ data: data });
-  // });
-  // await Promise.all(aa);
-
-  // const pa = pelatihAnggar.map((data) => {
-  //   return prisma.pelatih.create({ data: data });
-  // });
-  // await Promise.all(pa);
+  // Atlit anggar
+  await Promise.all(
+    atlitAnggar.map((data) => prisma.atlit.create({ data: data }))
+  );
 }
 
 main()

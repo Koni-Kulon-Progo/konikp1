@@ -1,4 +1,4 @@
-export default [
+module.exports = [
   { id: 1, nama: "BILYARD" },
   { id: 2, nama: "CATUR" },
   { id: 3, nama: "ANGKAT BESI" },

@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "prisma db seed",
+    "setup": "docker-compose down -v && docker-compose up -d && npm run db:migrate && npm run db:seed"
   },
   "prisma": {
     "seed": "node prisma/seed.js"
@@ -29,6 +32,6 @@
   "devDependencies": {
     "cypress": "^12.7.0",
     "prism": "^4.1.2",
-    "prisma": "^4.10.1"
+    "prisma": "^4.11.0"
   }
 }

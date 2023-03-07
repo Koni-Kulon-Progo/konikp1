@@ -9,29 +9,24 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Setup
 
-Run the database first
-
-```bash
-$ docker-compose up -d
-```
-
-Running the database migration
-
-```bash
-$ npx prisma migrate dev
-```
-
-Seed the database
-
-```bash
-$ npx prisma db seed
-```
-
-To run the application on local, run :
+Install dependencies
 
 ```bash
 $ npm install
+```
+
+Setup database
+
+```bash
+$ npm run setup
+```
+
+Run development mode
+
+```bash
 $ npm run dev
 ```
+
+
 
 

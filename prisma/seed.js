@@ -61,6 +61,28 @@ async function main() {
       prisma.wasit.create({ data: referee })
     )
   );
+
+  // Pelatih
+  const coach = excelToJson({
+    sourceFile: path.join(__dirname, "seed-data", "dataPelatih.xlsx"),
+    header: {
+      rows: 1,
+    },
+    columnToKey: {
+      A: "nama",
+      B: "alamat",
+      C: "ttl",
+      D: "telephone",
+      E: "gender",
+      F: "keterangan",
+      G: "cabor_id",
+    }
+  });
+  await Promise.all(
+    normalizeAndConcat(coach).map((coach) =>
+      prisma.pelatih.create({ data: coach })
+    )
+  );
 }
 
 main()

@@ -64,7 +64,7 @@ async function main() {
 
   // Pelatih
   const coach = excelToJson({
-    sourceFile: path.join(__dirname, "seed-data", "dataPelatih.xls"),
+    sourceFile: path.join(__dirname, "seed-data", "dataPelatih.xlsx"),
     header: {
       rows: 1,
     },

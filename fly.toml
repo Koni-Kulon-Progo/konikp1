@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 # fly.toml file generated for kewer on 2023-03-07T12:54:25+07:00
 
 app = "kewer"
+=======
+# fly.toml file generated for koni-westprog on 2023-03-07T04:33:19+07:00
+
+app = "koni-westprog"
+>>>>>>> 676fc0a1985005fe8373682be7037543b29eeece
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []

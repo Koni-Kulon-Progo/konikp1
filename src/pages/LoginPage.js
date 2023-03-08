@@ -1,14 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Form, Input, Button,Col, Row } from 'antd';
 
 function Login() {
+
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
+
   const onFinish = (values) => {
     console.log('Berhasil:', values);
     // iki logic nggo validasi email ro password
   };
 
   const onFinishFailed = (errorInfo) => {
-    alert("wuuuu goblok lali password")
     console.log('Gagal:', errorInfo);
   };
 
@@ -32,7 +35,7 @@ function Login() {
             { type: 'email', message: 'Please enter a valid email address!' },
           ]}
         >
-          <Input />
+          <Input value={email} onChange={(e) => setEmail(e.target.value)} />
         </Form.Item>
 
         <Form.Item
@@ -40,7 +43,7 @@ function Login() {
           name="password"
           rules={[{ required: true, message: 'Please input your password!' }]}
         >
-          <Input.Password />
+          <Input.Password value={password} onChange={(e) => setPassword(e.target.value)}/>
         </Form.Item>
 
         <Form.Item align="end">
@@ -50,7 +53,10 @@ function Login() {
         </Form.Item>
       </Form>
         </Col>
-        <Col span={8} align="center"></Col>
+        <Col span={8} align="center">
+          <h1>Email : {email}</h1>
+          <h1>Password : {password}</h1>
+        </Col>
       </Row>
     </>
   );

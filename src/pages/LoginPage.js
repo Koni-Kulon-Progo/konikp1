@@ -1,65 +1,50 @@
-import React, {useState} from 'react';
-import { Form, Input, Button,Col, Row } from 'antd';
+import React, { useState } from 'react';
+import { Form, Input, Button } from 'antd';
 
-function Login() {
+function LoginPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
-
-  const onFinish = (values) => {
-    console.log('Berhasil:', values);
-    // iki logic nggo validasi email ro password
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log('Gagal:', errorInfo);
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = { email: email, password: password };
+    fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   };
 
   return (
-    <>
-      <h2 align="center">Login Koni Kulon Progo</h2>
-      <Row>
-        <Col span={8} align="center"></Col>
-        <Col span={8} align="end">
-        <Form
-        name="basic"
-        initialValues={{ remember: true }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-      >
-        <Form.Item
-          label="Email"
-          name="email"
-          rules={[
-            { required: true, message: 'Please input your email!' },
-            { type: 'email', message: 'Please enter a valid email address!' },
-          ]}
-        >
-          <Input value={email} onChange={(e) => setEmail(e.target.value)} />
-        </Form.Item>
-
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[{ required: true, message: 'Please input your password!' }]}
-        >
-          <Input.Password value={password} onChange={(e) => setPassword(e.target.value)}/>
-        </Form.Item>
-
-        <Form.Item align="end">
-          <Button type="primary" htmlType="submit">
-            Login
-          </Button>
-        </Form.Item>
-      </Form>
-        </Col>
-        <Col span={8} align="center">
-          <h1>Email : {email}</h1>
-          <h1>Password : {password}</h1>
-        </Col>
-      </Row>
-    </>
+    <Form layout="vertical" onSubmit={handleSubmit}>
+      <Form.Item label="Email" name="email" rules={[{ required: true, message: 'Please input your email!' }]}>
+        <Input placeholder="Email" value={email} onChange={handleEmailChange} />
+      </Form.Item>
+      <Form.Item label="Password" name="password" rules={[{ required: true, message: 'Please input your password!' }]}>
+        <Input.Password placeholder="Password" value={password} onChange={handlePasswordChange} />
+      </Form.Item>
+      <Form.Item>
+        <Button type="primary" htmlType="submit">
+          Login
+        </Button>
+      </Form.Item>
+    </Form>
   );
 }
 
-export default Login;
+export default LoginPage;

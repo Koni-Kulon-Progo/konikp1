@@ -1,49 +1,55 @@
 import React, { useState } from 'react';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, Col, Row } from 'antd';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import axios from 'axios';
 
 function LoginPage() {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
+  const handleSubmit = async (values) => {
+    const credentials = { username, password };
+    const user = await axios.post("/api/auth/login", credentials);
+    console.log(user);
+  }
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = { email: email, password: password };
-    fetch('/api/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Success:', data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-  };
 
   return (
-    <Form layout="vertical" onSubmit={handleSubmit}>
-      <Form.Item label="Email" name="email" rules={[{ required: true, message: 'Please input your email!' }]}>
-        <Input placeholder="Email" value={email} onChange={handleEmailChange} />
-      </Form.Item>
-      <Form.Item label="Password" name="password" rules={[{ required: true, message: 'Please input your password!' }]}>
-        <Input.Password placeholder="Password" value={password} onChange={handlePasswordChange} />
-      </Form.Item>
-      <Form.Item>
-        <Button type="primary" htmlType="submit">
-          Login
-        </Button>
-      </Form.Item>
-    </Form>
+    <Row justify="center" >
+      <Col xs={24} sm={18} md={12} lg={8}>
+        <h1>LOGIN KONI KULON PROGO</h1>
+        <Form onFinish={handleSubmit}>
+          <Form.Item
+            name="username"
+            rules={[{ required: true, message: 'Please input your username!' }]}
+          >
+            <Input
+              prefix={<UserOutlined />}
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </Form.Item>
+          <Form.Item
+            name="password"
+            rules={[{ required: true, message: 'Please input your password!' }]}
+          >
+            <Input.Password
+              prefix={<LockOutlined />}
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Log in
+            </Button>
+          </Form.Item>
+        </Form>
+      </Col>
+    </Row>
   );
 }
 

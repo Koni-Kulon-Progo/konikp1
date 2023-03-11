@@ -186,6 +186,18 @@ function DataAtlit({ atlit, cabor }) {
       })
     : [];
 
+    async function handleDownloadFile() {
+      const res = await fetch('/api/atlit/download', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      })
+      const blob = await res.blob();
+      const file = window.URL.createObjectURL(blob);
+      window.location.assign(file);
+    }
+
   return (
     <>
       <Layout className="layout">
@@ -232,6 +244,7 @@ function DataAtlit({ atlit, cabor }) {
         </Sider>
         <div style={ { backgroundColor: "black" }}>
           <h1 align="center" style={{color: "white",margin: "0 0 50px 0"}}>DATA ATLIT KONI KP</h1>
+          <Button type='primary' onClick={() => handleDownloadFile()} id="btn_sarpras1"> Download File</Button>
           <Button type="primary" onClick={() => setVisible(true)} id="mutbgttt">
             + Data
           </Button>

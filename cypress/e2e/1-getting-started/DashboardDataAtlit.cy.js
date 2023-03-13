@@ -12,5 +12,6 @@ describe('DASHBOARD DATA ATLIT', () => {
         cy.get('#gender').type("Laki-Laki")
         cy.get('#cabor_id').type("KEMPO")
         cy.get('.rc-virtual-list-holder-inner').first().click()
+        cy.get('.ant-modal-footer').contains('OK').click()
     })
 })

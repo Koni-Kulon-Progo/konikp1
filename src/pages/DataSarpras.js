@@ -226,8 +226,8 @@ import {
         ]}
             />
           </Sider>
-          <div>
-            <h1>DATA SARPRAS KONI KP</h1>
+          <div style={{ backgroundColor: "black"}}>
+            <h1 align="center" style={{color: "white",margin: "0 0 50px 0"}}>DATA SARPRAS KONI KP</h1>
             <div style={{ display: 'flex', justifyContent: 'space-between',marginBottom: "20px" }}>
             <Button type='primary' onClick={() => handleDownloadFile()} id="btn_sarpras1"> Download File</Button>
             <Button type='primary' onClick={() => setVisible(true)} id="btn_sarpras12">+ Data</Button>

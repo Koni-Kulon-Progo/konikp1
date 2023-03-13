@@ -3,10 +3,10 @@ import { withIronSessionApiRoute } from "iron-session/next";
 export default withIronSessionApiRoute(
   async function loginRoute(req, res) {
     const { username, password } = req.body
-    if (username === 'heaven' && password === 'sendutsik123') {
+    if (username === 'heaven' && password === 'sendutsek123') {
         req.session.user = {
             admin: true,
-            cabor_id: 1,
+            
         }
         await req.session.save();
         res.send({ message: 'Success login!' });

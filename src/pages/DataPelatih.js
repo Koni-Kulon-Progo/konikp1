@@ -250,16 +250,20 @@ function DataPelatih({ pelatih,cabor }) {
       ]}
           />
         </Sider>
-        <div>
-          <h1>DATA PELATIH KONI KP</h1>
+        <Row>
+          <Col span={24} align="center"><h1>DATA PELATIH KONI KP</h1></Col>
+          <Col span={24}>
           <Button type='primary' onClick={() => setVisible(true)} id="btn_pelatihhhh">+ Data</Button>
-        <Table
+          <Table
           columns={columns}
           dataSource={data}
           scroll={{
-            x: 1700,
+            x: 1500,
           }}
+          responsive={true}
         />
+          </Col>
+          
       <Modal
         title="Edit Data Pelatih"
         open={visible}
@@ -337,7 +341,7 @@ function DataPelatih({ pelatih,cabor }) {
         </Form>
         
       </Modal>
-        </div>
+        </Row>
               
         </Layout>
     </>

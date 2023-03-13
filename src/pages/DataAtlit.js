@@ -235,10 +235,6 @@ function DataAtlit({ atlit, cabor }) {
                 icon: <HomeOutlined />,
                 label: <Link href="/">Home</Link>,
               },
-              {
-                key: "6",
-                label: <Link href="/LoginPage"><Button>Login</Button></Link>
-              }
             ]}
           />
         </Sider>

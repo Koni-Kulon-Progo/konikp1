@@ -25,9 +25,9 @@ export default function Home() {
         <Row>
           <Col xs={{ span: 24 }} md={{ span: 24 }}>
             <div style={{ display: 'block', justifyContent: 'center',textAlign: "center" }} className="backgrounde">
-            <h3 style={{ fontSize: "30px", textAlign: 'center',margin: "0",paddingTop: "200px",color: "red" }}>INFORMASI PRESTASI <br />& <br /> INDUSTRI OLAHRAGA</h3>
-            <h2 style={{ textAlign: "center",marginTop: "100px" }}>Komite Olahraga Nasional Indonesia (KONI) adalah satu-satunya organisasi yang berwenang dan bertanggung jawab mengelola, membina, mengembangkan & mengkoordinasikan seluruh pelaksanaan kegiatan olahraga prestasi setiap anggota di Indonesia.</h2>
-            <Link href="/Sambutan"><Button style={{ backgroundColor: "red", color: "white",marginTop: "100px" }} id="buttonIndex">LEBIH LANJUT</Button></Link>
+            <h1 style={{ fontSize: "60px", textAlign: 'center',margin: "0",paddingTop: "200px",color: "white" }}>SELAMAT DATANG DI WEBSITE <br /> - KONI KULON PROGO -</h1>
+            <h2 style={{ textAlign: "center",marginTop: "100px", color: "white" }}>Komite Olahraga Nasional Indonesia (KONI) adalah satu-satunya organisasi yang berwenang dan bertanggung jawab mengelola, membina, mengembangkan & mengkoordinasikan seluruh pelaksanaan kegiatan olahraga prestasi setiap anggota di Indonesia.</h2>
+            <Link href="/Sambutan"><Button style={{ marginTop: "100px" }} id="buttonIndex">LEBIH LANJUT</Button></Link>
             </div>
           </Col>
         </Row>

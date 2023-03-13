@@ -35,7 +35,8 @@ body {
 
 
 .backgrounde {
-  background-image: url(../assets/cangkring.webp);
+  /* background-image: url(../assets/cangkring.webp); */
+  background-color: rgb(0, 29, 56);
   background-size: cover;
-  height: 1000px;
+  height: 720px;
 }

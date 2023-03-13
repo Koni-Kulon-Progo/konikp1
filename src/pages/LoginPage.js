@@ -24,7 +24,8 @@ function LoginPage() {
     if(response.ok) {
       router.push('/DataPelatih')
     } else {
-      router.push('/')
+      alert('Salah blok goblok');
+      
     }
   }
 

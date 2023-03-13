@@ -13,13 +13,19 @@ function LoginPage() {
 
   const handleSubmit = async (values) => {
     const credentials = { username, password };
-    const user = await axios.post("/api/auth/login", credentials);
-    if(user.status === 200) {
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(credentials)
+    })
+
+    if(response.ok) {
       router.push('/DataPelatih')
     } else {
-      router.push('/DataWasit')
+      router.push('/')
     }
-    console.log(user);
   }
 
 

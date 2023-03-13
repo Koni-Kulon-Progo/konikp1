@@ -1,36 +1,25 @@
-/* eslint-disable import/no-anonymous-default-export */
-import { sign } from "jsonwebtoken";
-import { serialize } from "cookie";
+import { withIronSessionApiRoute } from "iron-session/next";
 
-const secret = process.env.SECRET;
-
-export default async function (req, res) {
-  const { username, password } = req.body;
-
-  if (username === "heaven" && password === "sendutsek123") {
-    const token = sign(
-      {
-        exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 30, // 30 dino
-        username: username,
-      },
-      secret
-    );
-  
-    const saksakke = serialize("OursiteJWT", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV !== "development",
-      sameSite: "strict",
-      maxAge: 60 * 60 * 24 * 30,
-      path: "/",
-    });
-  
-    res.setHeader("Set-Cookie", saksakke);
-  
-    res.status(200).json({ message: "Success njing!" });
-
-   
-  } else {
-    res.json({ message: "salah blok goblok!" });
-  }
-  
-}
+export default withIronSessionApiRoute(
+  async function loginRoute(req, res) {
+    const { username, password } = req.body
+    if (username === 'heaven' && password === 'sendutsik123') {
+        req.session.user = {
+            admin: true,
+            cabor_id: 1,
+        }
+        await req.session.save();
+        res.send({ message: 'Success login!' });
+    } else {
+        res.status(400).send({ message: 'Cannot login! Wrong password and username!' })
+    }
+  },
+  {
+    cookieName: "myapp_cookiename",
+    password: "complex_password_at_least_32_characters_long",
+    // secure: true should be used in production (HTTPS) but can't be used in development (HTTP)
+    cookieOptions: {
+      secure: process.env.NODE_ENV === "production",
+    },
+  },
+);

@@ -58,7 +58,6 @@ function DataWasit({ wasit,cabor }) {
   };
 
   const handleSubmit = async () => {
-    console.log("iki submit",handleSubmit)
     const values = await form.validateFields();
     console.log(values)
     try {

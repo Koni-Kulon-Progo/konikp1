@@ -27,7 +27,7 @@ function Navbar() {
         </Col>
         <Col>
           <Link href="/LoginPage">
-            <Button type="primary" onClick={clickHandle} id="buttonNavbar">Dashboard</Button>
+            <Button style={{backgroundColor: "rgb(226, 24, 24)", color: "white"}} onClick={clickHandle} id="buttonNavbar">Dashboard</Button>
           </Link>
         </Col>
       </Row>

@@ -23,7 +23,7 @@ export async function getServerSideProps() {
     orderBy: {
       cabor: {
         nama: "asc"
-      }
+      },
     }
   });
 
@@ -44,15 +44,15 @@ function DataAtlit({ atlit, cabor }) {
 
   //  edit
   const [visible, setVisible] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(null);
+  const [currentAtlit, setCurrentAtlit] = useState(null)
 
   const refreshData = () => {
     router.replace(router.asPath);
   };
 
-  const handleEdit = (index) => {
+  const handleEdit = (record) => {
     form.resetFields();
-    setCurrentIndex(index);
+    setCurrentAtlit(record)
     setVisible(true);
   };
 
@@ -87,11 +87,11 @@ function DataAtlit({ atlit, cabor }) {
 
   const handleCancel = () => {
     form.resetFields();
-    setCurrentIndex(null);
+    setCurrentAtlit(null)
     setVisible(false);
   };
 
-  const handleDelete = (index) => {
+  const handleDelete = (record) => {
     Modal.confirm({
       title: "Apakah anda yakin menghapus data atlit ini?",
       onOk: async () => {
@@ -100,26 +100,19 @@ function DataAtlit({ atlit, cabor }) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ id: atlit[index].id }),
+          body: JSON.stringify({ id: record.id}),
         });
         refreshData();
       },
-      onCancel() {},
     });
   };
 
   const columns = [
     {
-      title: "No",
-      width: 100,
-      dataIndex: "key",
-      key: "name",
-      fixed: "left",
-    },
-    {
       title: "Nama Lengkap",
-      dataIndex: "name",
+      dataIndex: "nama",
       key: "1",
+      
     },
     {
       title: "TTL",
@@ -152,7 +145,7 @@ function DataAtlit({ atlit, cabor }) {
       fixed: "right",
       width: 100,
       render: (text, record, index) => (
-        <Button type="primary" onClick={() => handleEdit(index)} id="mut">
+        <Button type="primary" onClick={() => handleEdit(record)} id="mut">
           Edit
         </Button>
       ),
@@ -163,7 +156,7 @@ function DataAtlit({ atlit, cabor }) {
       fixed: "right",
       width: 100,
       render: (text, record, index) => (
-        <Button type="primary" danger onClick={() => handleDelete(index)} id="mutbgt">
+        <Button type="primary" danger onClick={() => handleDelete(record)} id="mutbgt">
           <DeleteOutlined />
         </Button>
       ),
@@ -175,8 +168,9 @@ function DataAtlit({ atlit, cabor }) {
   const data = atlit
     ? atlit.map((item, index) => {
         return {
-          key: index + 1,
-          name: item.nama,
+          key: index,
+          id: item.id,
+          nama: item.nama,
           ttl: item.ttl,
           alamat: item.alamat,
           telephone: item.telephone,
@@ -247,6 +241,7 @@ function DataAtlit({ atlit, cabor }) {
             </Button>
           </div>
           <Table
+            style={{ backgroundColor: 'white' }}
             columns={columns}
             dataSource={data}
             scroll={{
@@ -263,7 +258,7 @@ function DataAtlit({ atlit, cabor }) {
             <Form
               preserve={false}
               form={form}
-              initialValues={currentIndex === null ? {} : atlit[currentIndex]}
+              initialValues={currentAtlit}
             >
               <Form.Item
                 label="ID"

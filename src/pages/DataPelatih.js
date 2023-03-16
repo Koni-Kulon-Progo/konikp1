@@ -192,8 +192,9 @@ function DataPelatih({ pelatih,cabor }) {
 
   const data = pelatih ? pelatih.map((item, index) => {
     return {
-      key: index + 1, 
-      name: item.nama,
+      key: index,
+      id: item.id, 
+      nama: item.nama,
       ttl: item.ttl,
       alamat: item.alamat,
       telephone: item.telephone,
@@ -274,7 +275,7 @@ function DataPelatih({ pelatih,cabor }) {
         onCancel={handleCancel}
         destroyOnClose={true}
       >
-        <Form preserve={false} form={form} initialValues={currentIndex === null ? {} : pelatih[currentIndex]}>
+        <Form preserve={false} form={form} initialValues={currentIndex}>
           <Form.Item
             label="ID"
             hidden={true}

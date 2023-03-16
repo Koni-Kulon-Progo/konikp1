@@ -264,7 +264,7 @@ function DataAtlit({ atlit, cabor }) {
               {
                 key: "6",
                 icon: <CloseOutlined />,
-                label: <Button onClick={handleClearCookie}>Logout</Button>
+                label: <Button>Logout</Button>
               }
             ]}
           />

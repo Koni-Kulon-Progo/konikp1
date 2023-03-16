@@ -5,9 +5,9 @@ export default withIronSessionApiRoute(
     const { username, password } = req.body
     if (username === 'heaven' && password === 'sendutsek123') {
         req.session.user = {
-            admin: true,
-            
+          login: true,
         }
+
         await req.session.save();
         res.send({ message: 'Success login!' });
     } else {

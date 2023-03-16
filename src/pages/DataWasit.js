@@ -12,32 +12,56 @@ import React, { useState } from 'react';
 import Link from 'next/link'
 import prisma from '@/utils/prisma';
 import { useRouter } from 'next/router'
+import { withIronSessionSsr } from 'iron-session/next';
 
 const { Header, Sider, Content } = Layout;
+const cookieConfig =  {
+  cookieName: "myapp_cookiename",
+  password: "complex_password_at_least_32_characters_long",
+  // secure: true should be used in production (HTTPS) but can't be used in development (HTTP)
+  cookieOptions: {
+    secure: process.env.NODE_ENV === "production",
+  },
+}
 
-export async function getServerSideProps() {
-  const cabor = await prisma.cabor.findMany()
-  const wasit = await prisma.wasit.findMany({
-    include: {
-      cabor: true,
-    },
-    orderBy: {
-      cabor: {
-        nama: "asc"
+export const getServerSideProps = withIronSessionSsr(
+  async function getServerSideProps({ req }) {
+    const user = req.session.user;
+
+    if (!user) {
+      return {
+        redirect: {
+          destination: '/LoginPage',
+          permanent: false,
+        },
       }
     }
-  })
+  
 
-  return { 
-    props: {
-      wasit,
-      cabor: cabor.map(cbr => ({
-        label: cbr.nama,
-        value: cbr.id
-      }))
+    const cabor = await prisma.cabor.findMany()
+    const atlit = await prisma.wasit.findMany({
+      include: {
+        cabor: true,
+      },
+      orderBy: {
+        cabor: {
+          nama: "asc"
+        }
+      }
+    })
+  
+    return { 
+      props: {
+        wasit,
+        cabor: cabor.map(c => ({
+          label: c.nama,
+          value: c.id
+        }))
+      }
     }
-  }
-}
+  },
+  cookieConfig,
+)
 
 function DataWasit({ wasit,cabor }) {
   const [collapsed, setCollapsed] = useState(false);
@@ -51,9 +75,9 @@ function DataWasit({ wasit,cabor }) {
     router.replace(router.asPath)
   }
 
-  const handleEdit = (index) => {
+  const handleEdit = (record) => {
     form.resetFields()
-    setCurrentIndex(index);
+    setCurrentIndex(record);
     setVisible(true);
   };
 
@@ -93,7 +117,7 @@ function DataWasit({ wasit,cabor }) {
     setVisible(false);
   };
 
-  const handleDelete = (index) => {
+  const handleDelete = (record) => {
     Modal.confirm({
     title: 'Apakah anda yakin menghapus data wasit ini?',
     onOk: async () => {
@@ -102,7 +126,7 @@ function DataWasit({ wasit,cabor }) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ id: wasit[index].id })
+      body: JSON.stringify({ id: record.id })
     })
     refreshData()
   }
@@ -111,13 +135,7 @@ function DataWasit({ wasit,cabor }) {
 
 
   const columns = [
-    {
-      title: 'No',
-      width: 100,
-      dataIndex: 'key',
-      key: 'name',
-      fixed: 'left',
-    },
+    
     {
       title: 'Nama Lengkap',
       dataIndex: 'name',
@@ -158,14 +176,14 @@ function DataWasit({ wasit,cabor }) {
       key: 'operation',
       fixed: 'right',
       width: 100,
-      render: (text,record,index) => <Button type='primary' onClick={() => handleEdit(index)} id="btn_wasit">Edit</Button>,
+      render: (text,record,index) => <Button type='primary' onClick={() => handleEdit(record)} id="btn_wasit">Edit</Button>,
     },
     {
       title: "Action",
       key: 'operation',
       fixed: 'right',
       width: 100,
-      render: (text,record,index) => <Button type='primary' danger onClick={() => handleDelete(index)} id="btn_wasit1">Delete</Button>,
+      render: (text,record,index) => <Button type='primary' danger onClick={() => handleDelete(record)} id="btn_wasit1">Delete</Button>,
     }
   ];
 

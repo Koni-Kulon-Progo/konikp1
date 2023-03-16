@@ -11,33 +11,58 @@ import {
   import React, { useState } from 'react';
   import Link from 'next/link'
   import prisma from '@/utils/prisma';
-  import { useRouter } from 'next/router'
+  import { useRouter } from 'next/router';
+  import { withIronSessionSsr } from 'iron-session/next';
   
   const { Header, Sider, Content } = Layout;
   
-  export async function getServerSideProps() {
-    const cabor = await prisma.cabor.findMany()
-    const sarpras = await prisma.sarpras.findMany({
-      include: {
-        cabor: true,
-      },
-      orderBy: {
-        cabor: {
-          nama: "asc"
+  const cookieConfig =  {
+    cookieName: "myapp_cookiename",
+    password: "complex_password_at_least_32_characters_long",
+    // secure: true should be used in production (HTTPS) but can't be used in development (HTTP)
+    cookieOptions: {
+      secure: process.env.NODE_ENV === "production",
+    },
+  }
+  
+  export const getServerSideProps = withIronSessionSsr(
+    async function getServerSideProps({ req }) {
+      const user = req.session.user;
+  
+      if (!user) {
+        return {
+          redirect: {
+            destination: '/LoginPage',
+            permanent: false,
+          },
         }
       }
-    })
+    
   
-    return { 
-      props: {
-        sarpras,
-        cabor: cabor.map(c => ({
-          label: c.nama,
-          value: c.id
-        }))
+      const cabor = await prisma.cabor.findMany()
+      const atlit = await prisma.sarpras.findMany({
+        include: {
+          cabor: true,
+        },
+        orderBy: {
+          cabor: {
+            nama: "asc"
+          }
+        }
+      })
+    
+      return { 
+        props: {
+          sarpras,
+          cabor: cabor.map(c => ({
+            label: c.nama,
+            value: c.id
+          }))
+        }
       }
-    }
-  }
+    },
+    cookieConfig,
+  )
   
   function DataSarpras({ sarpras,cabor }) {
     const [collapsed, setCollapsed] = useState(false);

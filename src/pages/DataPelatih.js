@@ -29,7 +29,16 @@ const cookieConfig =  {
 export const getServerSideProps = withIronSessionSsr(
   async function getServerSideProps({ req }) {
     const user = req.session.user;
-    console.log(user)
+
+    if (!user) {
+      return {
+        redirect: {
+          destination: '/LoginPage',
+          permanent: false,
+        },
+      }
+    }
+  
 
     const cabor = await prisma.cabor.findMany()
     const pelatih = await prisma.pelatih.findMany({

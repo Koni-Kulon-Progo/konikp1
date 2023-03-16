@@ -77,9 +77,9 @@ function DataPelatih({ pelatih,cabor }) {
     router.replace(router.asPath)
   }
 
-  const handleEdit = (index) => {
+  const handleEdit = (record) => {
     form.resetFields()
-    setCurrentIndex(index);
+    setCurrentIndex(record);
     setVisible(true);
   };
 
@@ -118,7 +118,7 @@ function DataPelatih({ pelatih,cabor }) {
     setVisible(false);
   };
 
-  const handleDelete = (index) => {
+  const handleDelete = (record) => {
     Modal.confirm({
     title: 'Apakah anda yakin menghapus data pelatih ini?',
     onOk: async () => {
@@ -127,7 +127,7 @@ function DataPelatih({ pelatih,cabor }) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ id: pelatih[index].id })
+      body: JSON.stringify({ id:record.id })
     })
     refreshData()
   }
@@ -136,13 +136,7 @@ function DataPelatih({ pelatih,cabor }) {
 
 
   const columns = [
-    {
-      title: 'No',
-      width: 100,
-      dataIndex: 'key',
-      key: 'name',
-      fixed: 'left',
-    },
+    
     {
       title: 'Nama Lengkap',
       dataIndex: 'name',
@@ -183,14 +177,14 @@ function DataPelatih({ pelatih,cabor }) {
       key: 'operation',
       fixed: 'right',
       width: 100,
-      render: (text,record,index) => <Button type='primary' onClick={() => handleEdit(index)} id="btnPelatih">Edit</Button>,
+      render: (text,record,index) => <Button type='primary' onClick={() => handleEdit(record)} id="btnPelatih">Edit</Button>,
     },
     {
       title: "Action",
       key: 'operation',
       fixed: 'right',
       width: 100,
-      render: (text,record,index) => <Button type='primary' danger onClick={() => handleDelete(index)} id="btn_pelatih">Delete</Button>,
+      render: (text,record,index) => <Button type='primary' danger onClick={() => handleDelete(record)} id="btn_pelatih">Delete</Button>,
     }
   ];
 

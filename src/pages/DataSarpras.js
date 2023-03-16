@@ -76,9 +76,9 @@ import {
       router.replace(router.asPath)
     }
   
-    const handleEdit = (index) => {
+    const handleEdit = (record) => {
       form.resetFields()
-      setCurrentIndex(index);
+      setCurrentIndex(record);
       setVisible(true);
     };
   
@@ -117,7 +117,7 @@ import {
       setVisible(false);
     };
   
-    const handleDelete = (index) => {
+    const handleDelete = (record) => {
       Modal.confirm({
       title: 'Apakah anda yakin menghapus data sarpras ini ?',
       onOk: async () => {
@@ -135,13 +135,6 @@ import {
   
   
     const columns = [
-      {
-        title: 'No',
-        width: 100,
-        dataIndex: 'key',
-        key: 'name',
-        fixed: 'left',
-      },
       {
         title: 'Cabor',
         dataIndex: 'cabor',
@@ -167,14 +160,14 @@ import {
         key: 'operation',
         fixed: 'right',
         width: 100,
-        render: (text,record,index) => <Button type='primary' onClick={() => handleEdit(index)} id="btn_sarpras">Edit</Button>,
+        render: (text,record,index) => <Button type='primary' onClick={() => handleEdit(record)} id="btn_sarpras">Edit</Button>,
       },
       {
         title: "Action",
         key: 'operation',
         fixed: 'right',
         width: 100,
-        render: (text,record,index) => <Button type='primary' danger onClick={() => handleDelete(index)} id="btn_sarprass">Delete</Button>,
+        render: (text,record,index) => <Button type='primary' danger onClick={() => handleDelete(record)} id="btn_sarprass">Delete</Button>,
       }
     ];
   

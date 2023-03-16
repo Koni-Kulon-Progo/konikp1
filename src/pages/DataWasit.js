@@ -39,7 +39,7 @@ export const getServerSideProps = withIronSessionSsr(
   
 
     const cabor = await prisma.cabor.findMany()
-    const atlit = await prisma.wasit.findMany({
+    const wasit = await prisma.wasit.findMany({
       include: {
         cabor: true,
       },

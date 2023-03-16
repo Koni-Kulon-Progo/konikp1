@@ -5,6 +5,7 @@ import {
   UserOutlined,
   VideoCameraOutlined,
   HomeOutlined,
+  CloseOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Table, Form, Modal, Input, Button, Select } from "antd";
 import React, { useState } from "react";
@@ -24,6 +25,9 @@ const cookieConfig =  {
   },
 }
 
+
+
+
 export const getServerSideProps = withIronSessionSsr(
   async function getServerSideProps({ req }) {
     const user = req.session.user;
@@ -36,6 +40,8 @@ export const getServerSideProps = withIronSessionSsr(
         },
       }
     }
+
+    
   
 
     const cabor = await prisma.cabor.findMany()
@@ -217,6 +223,7 @@ function DataAtlit({ atlit, cabor }) {
       window.location.assign(file);
     }
 
+
   return (
     <>
       <Layout className="layout">
@@ -254,6 +261,11 @@ function DataAtlit({ atlit, cabor }) {
                 icon: <HomeOutlined />,
                 label: <Link href="/">Home</Link>,
               },
+              {
+                key: "6",
+                icon: <CloseOutlined />,
+                label: <Button onClick={handleClearCookie}>Logout</Button>
+              }
             ]}
           />
         </Sider>

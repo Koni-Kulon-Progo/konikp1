@@ -40,7 +40,7 @@ import {
     
   
       const cabor = await prisma.cabor.findMany()
-      const atlit = await prisma.sarpras.findMany({
+      const sarpras = await prisma.sarpras.findMany({
         include: {
           cabor: true,
         },

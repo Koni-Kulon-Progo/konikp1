@@ -126,7 +126,7 @@ import {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ id: sarpras[index].id })
+        body: JSON.stringify({ id:record.id })
       })
       refreshData()
     }
@@ -136,13 +136,8 @@ import {
   
     const columns = [
       {
-        title: 'Cabor',
-        dataIndex: 'cabor',
-        key: '1',
-      },
-      {
         title: 'Nama Barang',
-        dataIndex: 'name',
+        dataIndex: 'nama',
         key: '2',
       },
       {
@@ -154,6 +149,11 @@ import {
         title: 'Keterangan',
         dataIndex: 'keterangan',
         key: '4',
+      },
+      {
+        title: 'Cabor',
+        dataIndex: 'cabor',
+        key: '1',
       },
       {
         title: 'Action',
@@ -175,8 +175,9 @@ import {
   
     const data = sarpras ? sarpras.map((item, index) => {
       return {
-        key: index + 1, 
-        name: item.nama,
+        key: index,
+        id: item.id, 
+        nama: item.nama,
         tahun: item.tahun,
         cabor: item.cabor.nama,
         keterangan: item.keterangan
@@ -264,7 +265,7 @@ import {
           onCancel={handleCancel}
           destroyOnClose={true}
         >
-          <Form preserve={false} form={form} initialValues={currentIndex === null ? {} : sarpras[currentIndex]}>
+          <Form preserve={false} form={form} initialValues={currentIndex}>
             <Form.Item
               label="ID"
               hidden={true}

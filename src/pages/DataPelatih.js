@@ -139,7 +139,7 @@ function DataPelatih({ pelatih,cabor }) {
     
     {
       title: 'Nama Lengkap',
-      dataIndex: 'name',
+      dataIndex: 'nama',
       key: '1',
     },
     {

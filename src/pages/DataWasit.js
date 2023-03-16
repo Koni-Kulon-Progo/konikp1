@@ -138,7 +138,7 @@ function DataWasit({ wasit,cabor }) {
     
     {
       title: 'Nama Lengkap',
-      dataIndex: 'name',
+      dataIndex: 'nama',
       key: '1',
     },
     {
@@ -191,8 +191,9 @@ function DataWasit({ wasit,cabor }) {
 
   const data = wasit ? wasit.map((item, index) => {
     return {
-      key: index + 1, 
-      name: item.nama,
+      key: index,
+      id: item.id, 
+      nama: item.nama,
       ttl: item.ttl,
       alamat: item.alamat,
       telephone: item.telephone,
@@ -269,7 +270,7 @@ function DataWasit({ wasit,cabor }) {
         onCancel={handleCancel}
         destroyOnClose={true}
       >
-        <Form preserve={false} form={form} initialValues={currentIndex === null ? {} : wasit[currentIndex]}>
+        <Form preserve={false} form={form} initialValues={currentIndex}>
           <Form.Item
             label="ID"
             hidden={true}

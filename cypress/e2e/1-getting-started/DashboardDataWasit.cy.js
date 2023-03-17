@@ -4,6 +4,10 @@ describe('DASHBOARD DATA WASIT', () => {
         cy.visit('http://localhost:3000/DataWasit')
     })
     it('Click Dashboard', () => {
+        cy.get('#username').type('heaven')
+        cy.get('#password').type('sendutsek123')
+        cy.get('.ant-form-item-control-input').contains('Log in').click() 
+        cy.get('a[href="/DataWasit"]').click()
         cy.get('#btn_wasit12').click()
         cy.get('#nama').type("daniel iman k")
         cy.get('#ttl').type("yogyakarta,4 Januari 1996")

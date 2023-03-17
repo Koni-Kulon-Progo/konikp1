@@ -70,6 +70,7 @@ export const getServerSideProps = withIronSessionSsr(
 function DataAtlit({ atlit, cabor }) {
   const [collapsed, setCollapsed] = useState(false);
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
   //  edit
   const [visible, setVisible] = useState(false);
@@ -113,6 +114,20 @@ function DataAtlit({ atlit, cabor }) {
       console.error(error);
     }
   };
+
+  const logout = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch("/api/auth/logout", { method: "POST" });
+      const data = await response.json();
+      console.log(data.message);
+      // Redirect to login page or show success message
+    } catch (error) {
+      console.error(error);
+      // Show error message
+    }
+    setIsLoading(false);
+  }
 
   const handleCancel = () => {
     form.resetFields();
@@ -262,7 +277,9 @@ function DataAtlit({ atlit, cabor }) {
               {
                 key: "6",
                 icon: <CloseOutlined />,
-                label: <Button>Logout</Button>
+                label: <Button onClick={logout} disabled={isLoading}>
+                {isLoading ? "Logging out..." : "Logout"}
+              </Button>
               }
             ]}
           />

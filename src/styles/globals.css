@@ -34,7 +34,6 @@ body {
 }
 
 .backgrounde {
-  /* background-image: url(../assets/cangkring.webp); */
   background-color: rgb(0,21,41);
   border-radius: 0px 0px 400px 0px;
   background-size: cover;

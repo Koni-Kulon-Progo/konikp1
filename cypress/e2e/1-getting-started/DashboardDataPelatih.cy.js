@@ -4,6 +4,9 @@ describe('DASHBOARD DATA PELATIH', () => {
         cy.visit('http://localhost:3000/DataPelatih')
     })
     it('Click Dashboard', () => {
+        cy.get('#username').type('heaven')
+        cy.get('#password').type('sendutsek123')
+        cy.get('.ant-form-item-control-input').contains('Log in').click() 
         cy.get('#btn_pelatihhhh').click()
         cy.get('#nama').type("daniel iman k")
         cy.get('#ttl').type("yogyakarta,4 Januari 1996")

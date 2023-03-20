@@ -1,7 +1,7 @@
 
 import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
+  EditOutlined,
+  DeleteOutlined,
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
@@ -70,6 +70,7 @@ export const getServerSideProps = withIronSessionSsr(
 function DataPelatih({ pelatih,cabor }) {
   const [collapsed, setCollapsed] = useState(false);
   const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false);
 
   //  edit
   const [visible, setVisible] = useState(false);
@@ -119,6 +120,19 @@ function DataPelatih({ pelatih,cabor }) {
     setCurrentIndex(null);
     setVisible(false);
   };
+
+  const logout = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch("/api/auth/logout", { method: "POST" });
+      const data = await response.json();
+      console.log(data.message)
+      router.push("/")
+    } catch (error) {
+      console.error(error);
+    }
+    setIsLoading(false);
+  }
 
   const handleDelete = (record) => {
     Modal.confirm({
@@ -181,8 +195,8 @@ function DataPelatih({ pelatih,cabor }) {
       width: 100,
       render: (text,record,index) => (
         <>
-        <Button type='primary' onClick={() => handleEdit(record)} id="btnPelatih">Edit</Button>
-        <Button type='primary' danger onClick={() => handleDelete(record)} id="btn_pelatih">Delete</Button>
+        <Button type='primary' onClick={() => handleEdit(record)} id="btnPelatih"><EditOutlined /></Button>
+        <Button style={{marginTop: "5px"}} type='primary' danger onClick={() => handleDelete(record)} id="btn_pelatih"><DeleteOutlined /></Button>
         </>
       )
     },
@@ -205,19 +219,26 @@ function DataPelatih({ pelatih,cabor }) {
   }): [];
 
   
-  
+  async function handleDownloadFile() {
+    const res = await fetch('/api/pelatih/download', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+    const blob = await res.blob();
+    const file = window.URL.createObjectURL(blob);
+    window.location.assign(file);
+  }
 
   return (
     <>
-    <Row>
-      <Col span={2}>
-      <Sider trigger={null} collapsible collapsed={collapsed}>
+    <Layout className='layout'>
+    <Sider trigger={null} collapsible collapsed={collapsed}>
           <div className="logo">
-            {/* <Image src={Koni} width={45} height={47} /> */}
-            <h2>KONI KP</h2>
+            <h2 align="center">KONI KP</h2>
           </div>
           <Menu
-          style={{ height: "93.3vh"}}
               theme="dark"
               mode="inline"
               items={[
@@ -254,26 +275,34 @@ function DataPelatih({ pelatih,cabor }) {
                   icon: <HomeOutlined />,
                   label: <Link href="/">Home</Link>,
                 },
+                {
+                  key: "6",
+                  label: <Button onClick={logout} disabled={isLoading}>
+                  {isLoading ? "Logging out..." : "Logout"}
+                </Button>
+                }
       ]}
           />
-        </Sider>
-      </Col>
-      <Col span={22} style={{color: "red"}}>
-      <div style={{ backgroundColor: "black", height: "100vh"}}>
+          </Sider> 
+      <div style={{ backgroundColor: "black"}}>
         <Row>
-          <Col span={24} align="center" style={{color: "white"}}><h1>DATA PELATIH KONI KPK</h1></Col>
-          <Col span={24}>
+          <Col span={24} align="center" style={{color: "white"}}>
+            <h1>DATA PELATIH KONI KPK</h1>
+          </Col>
+          <Col span={12}>
+          <Button type='primary' onClick={() => handleDownloadFile()} id="btn_sarpras1"> Download File</Button>
+            </Col>
+            <Col span={12} style={{textAlign: "end"}}>
           <Button type='primary' onClick={() => setVisible(true)} id="btn_pelatihhhh">+ Data</Button>
+          </Col>
           <Table
+          className="black-form"
           columns={columns}
           dataSource={data}
           scroll={{
-            x: 1700,
+            x: 1720,
           }}
-          responsive={true}
         />
-          </Col>
-          
       <Modal
         title="Edit Data Pelatih"
         open={visible}
@@ -347,12 +376,10 @@ function DataPelatih({ pelatih,cabor }) {
   />
           </Form.Item>
         </Form>
-        
       </Modal>
-        </Row>
-        </div>
-      </Col>
     </Row>
+    </div>
+    </Layout>
     </>
     
   )

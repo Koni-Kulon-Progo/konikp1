@@ -5,7 +5,7 @@ import {
   UserOutlined,
   VideoCameraOutlined,
   HomeOutlined,
-  CloseOutlined,
+  EditOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Table, Form, Modal, Input, Button, Select,Row,Col } from "antd";
 import React, { useState } from "react";
@@ -192,9 +192,9 @@ function DataAtlit({ atlit, cabor }) {
       render: (text, record, index) => (
         <>
           <Button type="primary" onClick={() => handleEdit(record)} id="mut">
-            Edit
+          <EditOutlined />
           </Button>
-          <Button type="primary" danger onClick={() => handleDelete(record)} id="mutbgt">
+          <Button style={{marginTop: "5px"}} type="primary" danger onClick={() => handleDelete(record)} id="mutbgt">
             <DeleteOutlined />
           </Button>
         </>
@@ -293,7 +293,7 @@ function DataAtlit({ atlit, cabor }) {
             columns={columns}
             dataSource={data}
             scroll={{
-              x: 1720,
+              x: 1705,
             }}
           />
           <Modal
@@ -385,10 +385,8 @@ function DataAtlit({ atlit, cabor }) {
               </Form.Item>
             </Form>
           </Modal>
-
           </Row>
         </div>
-        
       </Layout>
     </>
   );

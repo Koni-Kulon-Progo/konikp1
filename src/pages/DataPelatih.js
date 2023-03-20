@@ -14,6 +14,8 @@ import Link from 'next/link'
 import prisma from '@/utils/prisma';
 import { useRouter } from 'next/router'
 import { withIronSessionSsr } from 'iron-session/next';
+import Image from 'next/image';
+import Koni from '../assets/koni.jpg'
 
 const { Header, Sider, Content } = Layout;
 
@@ -177,15 +179,13 @@ function DataPelatih({ pelatih,cabor }) {
       key: 'operation',
       fixed: 'right',
       width: 100,
-      render: (text,record,index) => <Button type='primary' onClick={() => handleEdit(record)} id="btnPelatih">Edit</Button>,
+      render: (text,record,index) => (
+        <>
+        <Button type='primary' onClick={() => handleEdit(record)} id="btnPelatih">Edit</Button>
+        <Button type='primary' danger onClick={() => handleDelete(record)} id="btn_pelatih">Delete</Button>
+        </>
+      )
     },
-    {
-      title: "Action",
-      key: 'operation',
-      fixed: 'right',
-      width: 100,
-      render: (text,record,index) => <Button type='primary' danger onClick={() => handleDelete(record)} id="btn_pelatih">Delete</Button>,
-    }
   ];
 
   const [form] = Form.useForm();
@@ -209,12 +209,15 @@ function DataPelatih({ pelatih,cabor }) {
 
   return (
     <>
-    <Layout className="layout">
-        <Sider trigger={null} collapsible collapsed={collapsed}>
+    <Row>
+      <Col span={2}>
+      <Sider trigger={null} collapsible collapsed={collapsed}>
           <div className="logo">
-            <h2 align="center">KONI KP</h2>
+            {/* <Image src={Koni} width={45} height={47} /> */}
+            <h2>KONI KP</h2>
           </div>
           <Menu
+          style={{ height: "93.3vh"}}
               theme="dark"
               mode="inline"
               items={[
@@ -254,7 +257,9 @@ function DataPelatih({ pelatih,cabor }) {
       ]}
           />
         </Sider>
-        <div style={{ backgroundColor: "black"}}>
+      </Col>
+      <Col span={22} style={{color: "red"}}>
+      <div style={{ backgroundColor: "black", height: "100vh"}}>
         <Row>
           <Col span={24} align="center" style={{color: "white"}}><h1>DATA PELATIH KONI KPK</h1></Col>
           <Col span={24}>
@@ -340,15 +345,14 @@ function DataPelatih({ pelatih,cabor }) {
             }
             options={cabor}
   />
-
-            
           </Form.Item>
         </Form>
         
       </Modal>
         </Row>
-        </div> 
-        </Layout>
+        </div>
+      </Col>
+    </Row>
     </>
     
   )

@@ -190,20 +190,14 @@ function DataAtlit({ atlit, cabor }) {
       fixed: "right",
       width: 100,
       render: (text, record, index) => (
-        <Button type="primary" onClick={() => handleEdit(record)} id="mut">
-          Edit
-        </Button>
-      ),
-    },
-    {
-      title: "Action",
-      key: "operation",
-      fixed: "right",
-      width: 100,
-      render: (text, record, index) => (
-        <Button type="primary" danger onClick={() => handleDelete(record)} id="mutbgt">
-          <DeleteOutlined />
-        </Button>
+        <>
+          <Button type="primary" onClick={() => handleEdit(record)} id="mut">
+            Edit
+          </Button>
+          <Button type="primary" danger onClick={() => handleDelete(record)} id="mutbgt">
+            <DeleteOutlined />
+          </Button>
+        </>
       ),
     },
   ];
@@ -245,7 +239,6 @@ function DataAtlit({ atlit, cabor }) {
         <div className="logo">
             <h2 align="center" >KONI KP</h2>
           </div>
-          <DeleteOutlined />
           <Menu
             theme="dark"
             mode="inline"

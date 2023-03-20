@@ -46,7 +46,18 @@ body {
   height: 728px;
 }
 
+.black-form{
+  background-color: white;
+}
+
+.form-item{
+  background-color: black;
+}
+
 @media only screen and (max-width: 600px) {
+
+  
+
   .row-box {
     display: block;
   }

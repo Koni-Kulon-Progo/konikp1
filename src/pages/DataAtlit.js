@@ -7,7 +7,7 @@ import {
   HomeOutlined,
   CloseOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu, Table, Form, Modal, Input, Button, Select } from "antd";
+import { Layout, Menu, Table, Form, Modal, Input, Button, Select,Row,Col } from "antd";
 import React, { useState } from "react";
 import Link from "next/link";
 import prisma from "@/utils/prisma";
@@ -285,19 +285,22 @@ function DataAtlit({ atlit, cabor }) {
           />
         </Sider>
         <div style={ { backgroundColor: "black", }}>
-        <h1 align="center" style={{color: "white",margin: "0 0 50px 0"}}>DATA ATLIT KONI KP</h1>
-          <div style={{display: 'flex', justifyContent: 'space-between',marginBottom: "20px"}}>
-            <Button type='primary' onClick={() => handleDownloadFile()} id="btn_sarpras1"> Download File</Button>
-            <Button type="primary" onClick={() => setVisible(true)} id="mutbgttt">
-            + Data
-            </Button>
-          </div>
-          <Table
-            style={{ backgroundColor: 'white' }}
+          <Row>
+            <Col span={24} align="center" style={{color: "white"}}>
+              <h1>DATA ATLIT KONI KP</h1>
+            </Col>
+            <Col span={12}>
+              <Button type='primary' onClick={() => handleDownloadFile()} id="btn_sarpras1"> Download File</Button>
+            </Col>
+            <Col span={12} style={{textAlign: "end"}}>
+              <Button type="primary" onClick={() => setVisible(true)} id="mutbgttt">+ Data </Button>
+            </Col>
+            <Table
+            className="black-form"
             columns={columns}
             dataSource={data}
             scroll={{
-              x: 1700,
+              x: 1720,
             }}
           />
           <Modal
@@ -308,6 +311,7 @@ function DataAtlit({ atlit, cabor }) {
             destroyOnClose={true}
           >
             <Form
+              style={{ backgroundColor: "black"}}
               preserve={false}
               form={form}
               initialValues={currentAtlit}
@@ -317,6 +321,7 @@ function DataAtlit({ atlit, cabor }) {
                 hidden={true}
                 name="id"
                 rules={[{ required: false }]}
+                style={{ backgroundColor: 'red' }} // tambahkan style marginBottom
               >
                 <Input />
               </Form.Item>
@@ -330,6 +335,7 @@ function DataAtlit({ atlit, cabor }) {
                 <Input />
               </Form.Item>
               <Form.Item
+                className="form-item"
                 label="TTL"
                 name="ttl"
                 rules={[
@@ -386,6 +392,8 @@ function DataAtlit({ atlit, cabor }) {
               </Form.Item>
             </Form>
           </Modal>
+
+          </Row>
         </div>
         
       </Layout>

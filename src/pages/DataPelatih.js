@@ -254,15 +254,16 @@ function DataPelatih({ pelatih,cabor }) {
       ]}
           />
         </Sider>
+        <div style={{ backgroundColor: "black"}}>
         <Row>
-          <Col span={24} align="center"><h1>DATA PELATIH KONI KP</h1></Col>
+          <Col span={24} align="center" style={{color: "white"}}><h1>DATA PELATIH KONI KPK</h1></Col>
           <Col span={24}>
           <Button type='primary' onClick={() => setVisible(true)} id="btn_pelatihhhh">+ Data</Button>
           <Table
           columns={columns}
           dataSource={data}
           scroll={{
-            x: 1500,
+            x: 1700,
           }}
           responsive={true}
         />
@@ -346,7 +347,7 @@ function DataPelatih({ pelatih,cabor }) {
         
       </Modal>
         </Row>
-              
+        </div> 
         </Layout>
     </>
     

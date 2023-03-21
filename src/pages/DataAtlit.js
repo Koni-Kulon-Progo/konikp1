@@ -13,7 +13,8 @@ import Link from "next/link";
 import prisma from "@/utils/prisma";
 import { useRouter } from "next/router";
 import { withIronSessionSsr } from 'iron-session/next';
-import { redirect } from "next/dist/server/api-utils";
+import Image from 'next/image'
+import Koni from '../assets/koni.jpg'
 
 const { Header, Sider, Content } = Layout;
 
@@ -237,7 +238,7 @@ function DataAtlit({ atlit, cabor }) {
       <Layout className="layout">
         <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="logo">
-            <h2 align="center" >KONI KP</h2>
+            <h2 align="center" style={{color: "white"}} >KONI KP</h2>
           </div>
           <Menu
             theme="dark"
@@ -277,7 +278,7 @@ function DataAtlit({ atlit, cabor }) {
             ]}
           />
         </Sider>
-        <div style={ { backgroundColor: "black", }}>
+        <div style={ { backgroundColor: " rgb(0,21,41)", }}>
           <Row>
             <Col span={24} align="center" style={{color: "white"}}>
               <h1>DATA ATLIT KONI KP</h1>

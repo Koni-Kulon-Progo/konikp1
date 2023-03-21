@@ -61,7 +61,7 @@ function News() {
             <h3>IKI ISINE</h3>
         </Col>
         <Col span={12} xs={{span:12}} align="center" style={{ backgroundColor: " rgb(0,21,41)"}}>
-        <Image src={Kewr} width={290} alt="gambar porda"/>
+        <Image src={Koni} width={290} alt="gambar porda"/>
         </Col>
         <Col span={12} xs={{span:12}} align="center" style={{ backgroundColor: " rgb(0,21,41)", color: "white"}}>
           <h2>IKI JUDULE</h2>

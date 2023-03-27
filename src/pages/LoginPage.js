@@ -1,44 +1,48 @@
-import React, { useState } from 'react';
-import { Form, Input, Button, Col, Row } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import {useRouter} from 'next/router'
-import Koni from '../images/konikp.png';
+import React, { useState } from "react";
+import { Form, Input, Button, Col, Row } from "antd";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { useRouter } from "next/router";
+import Koni from "../assets/konikp.png";
 import Image from "next/image";
 
 function LoginPage() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const router = useRouter()
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (values) => {
     const credentials = { username, password };
-    const response = await fetch('/api/auth/login', {
-      method: 'POST',
+    const response = await fetch("/api/auth/login", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(credentials)
-    })
+      body: JSON.stringify(credentials),
+    });
 
-    if(response.ok) {
-      router.push('/DataPelatih')
+    if (response.ok) {
+      router.push("/DataPelatih");
     } else {
       alert('username atau password salah !');
-      
     }
-  }
-
+  };
 
   return (
-    <Row justify="center" >
+    <Row justify="center">
       <Col xs={24} sm={18} md={12} lg={8}>
         <div style={{ display: "flex", justifyContent: "center" }}>
-        <Image src={Koni} alt="Logo KONI" width={400} height={240} style={{ objectFit: "contain" }} />
+          <Image
+            src={Koni}
+            alt="Logo KONI"
+            width={400}
+            height={240}
+            style={{ objectFit: "contain" }}
+          />
         </div>
         <Form onFinish={handleSubmit}>
           <Form.Item
             name="username"
-            rules={[{ required: true, message: 'Please input your username!' }]}
+            rules={[{ required: true, message: "Please input your username!" }]}
           >
             <Input
               prefix={<UserOutlined />}
@@ -49,7 +53,7 @@ function LoginPage() {
           </Form.Item>
           <Form.Item
             name="password"
-            rules={[{ required: true, message: 'Please input your password!' }]}
+            rules={[{ required: true, message: "Please input your password!" }]}
           >
             <Input.Password
               prefix={<LockOutlined />}

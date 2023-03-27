@@ -31,7 +31,7 @@ function News() {
     <Col span={24} style={{ backgroundColor: " rgb(0,21,41)", color: "white"}}>
     <Carousel autoplay>
   {images.map((image) => (
-    <Col key={image.id} span={24} align="center">
+    <Col span={24} align="center">
       <Image src={image.url} alt="gambar" width={300} height={200} />
     </Col>
   ))}

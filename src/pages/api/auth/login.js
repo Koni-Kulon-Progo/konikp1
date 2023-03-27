@@ -3,7 +3,7 @@ import { withIronSessionApiRoute } from "iron-session/next";
 export default withIronSessionApiRoute(
   async function loginRoute(req, res) {
     const { username, password } = req.body
-    if (username === 'heaven' && password === 'sendutsek123') {
+    if (username === 'konikp' && password === 'adminkoni') {
         req.session.user = {
           login: true,
         }

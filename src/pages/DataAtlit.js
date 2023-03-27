@@ -79,6 +79,10 @@ function DataAtlit({ atlit, cabor }) {
   const [visible, setVisible] = useState(false);
   const [currentAtlit, setCurrentAtlit] = useState(null)
 
+  const handleCollapse = (collapsed) => {
+    setCollapsed(collapsed);
+  };
+
   const refreshData = () => {
     router.replace(router.asPath);
   };
@@ -243,6 +247,9 @@ function DataAtlit({ atlit, cabor }) {
           <Menu
             theme="dark"
             mode="inline"
+            collapsed={collapsed}
+            onCollapse={handleCollapse}
+            collapsedWidth={80}
             items={[
               {
                 key: "1",

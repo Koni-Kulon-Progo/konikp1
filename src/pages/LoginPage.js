@@ -23,7 +23,7 @@ function LoginPage() {
     if(response.ok) {
       router.push('/DataPelatih')
     } else {
-      alert('Salah blok goblok');
+      alert('username atau password salah !');
       
     }
   }

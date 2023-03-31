@@ -1,11 +1,12 @@
 import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
+  DeleteOutlined,
+  EditOutlined,
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
   DiffOutlined,
   HomeOutlined,
+  DownloadOutlined,
 } from '@ant-design/icons';
 import { Layout, Menu, Row, Col, Divider, Table, Form, Modal, Input, Button, Select} from 'antd';
 import React, { useState } from 'react';
@@ -176,15 +177,16 @@ function DataWasit({ wasit,cabor }) {
       key: 'operation',
       fixed: 'right',
       width: 100,
-      render: (text,record,index) => <Button type='primary' onClick={() => handleEdit(record)} id="btn_wasit">Edit</Button>,
+      render: (text,record,index) =>
+      <>
+        <Button type="primary" onClick={() => handleEdit(record)} id="mut">
+          <EditOutlined />
+          </Button>
+          <Button style={{marginTop: "5px"}} type="primary" danger onClick={() => handleDelete(record)} id="mutbgt">
+            <DeleteOutlined />
+          </Button>
+      </> 
     },
-    {
-      title: "Action",
-      key: 'operation',
-      fixed: 'right',
-      width: 100,
-      render: (text,record,index) => <Button type='primary' danger onClick={() => handleDelete(record)} id="btn_wasit1">Delete</Button>,
-    }
   ];
 
   const [form] = Form.useForm();
@@ -203,6 +205,17 @@ function DataWasit({ wasit,cabor }) {
     }
   }): [];
 
+  async function handleDownloadFile() {
+    const res = await fetch('/api/wasit/download', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+    const blob = await res.blob();
+    const file = window.URL.createObjectURL(blob);
+    window.location.assign(file);
+  }
   
   
 
@@ -253,14 +266,22 @@ function DataWasit({ wasit,cabor }) {
       ]}
           />
         </Sider>
-        <div>
-          <h1>DATA WASIT KONI KP</h1>
-          <Button type='primary' onClick={() => setVisible(true)} id="btn_wasit12">+ Data</Button>
+        <div style={ { backgroundColor: " rgb(0,21,41)", }}>
+          <Row>
+            <Col span={24} align="center" style={{color: "white"}}>
+              <h1>DATA ATLIT KONI KP</h1>
+            </Col>
+            <Col span={12}>
+              <Button type='primary' onClick={() => handleDownloadFile()} id="btn_sarpras1"> <DownloadOutlined /> Download</Button>
+            </Col>
+            <Col span={12} style={{textAlign: "end"}}>
+              <Button type="primary" onClick={() => setVisible(true)} id="mutbgttt">+ Data </Button>
+            </Col>
         <Table
           columns={columns}
           dataSource={data}
           scroll={{
-            x: 1700,
+            x: 1720,
           }}
         />
       <Modal
@@ -337,10 +358,9 @@ function DataWasit({ wasit,cabor }) {
             />
           </Form.Item>
         </Form>
-        
       </Modal>
-        </div>
-              
+      </Row>
+        </div>  
         </Layout>
     </>
     

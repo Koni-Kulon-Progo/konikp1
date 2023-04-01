@@ -6,32 +6,12 @@ import LogoKoni from '../assets/koni.jpg'
 const { Header } = Layout;
 const { Title } = Typography;
 
-const clickHandle = () => {
-  console.log("iki pencetan dashboard")
-}
-
 function Navbar() {
   return <>
    <Header style={{  zIndex: 1, width: '100%'}}>
-      <Row justify="space-between" align="middle">
-        <Col>
-          <Image src={LogoKoni} alt="Logo KONI" width={60} height={60}  />
-        </Col>
-        <Col>
-          <Title level={2} style={{ color: '#000', marginBottom: 0 }}>
-            KONI KULON PROGO
-          </Title>
-          <Title level={5} style={{ color: '#000', marginTop: 0 ,textAlign:"center"}} type="warning">
-            Komite Olahraga Nasional Indonesia
-          </Title>
-        </Col>
-        <Col>
-          <Link href="/DataAtlit">
-            <Button style={{backgroundColor: "rgb(226, 24, 24)", color: "white"}} onClick={clickHandle} id="buttonNavbar">Dashboard</Button>
-          </Link>
-        </Col>
-      </Row>
-      <Menu theme="dark" mode="horizontal" style={{ display: 'flex', justifyContent: 'center' }}>
+      <Menu theme="dark" mode="horizontal" style={{ display: 'flex', backgroundColor: 'black' }}>
+        <Col span={12}><h1>KONI KULON PROGO</h1></Col>
+        <Col span={12} style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <Menu.Item key="home">
           <Link href="/">
             <h4>Home</h4>
@@ -47,11 +27,22 @@ function Navbar() {
             <h4>News & Event</h4>
           </Link>
         </Menu.Item>
-        <Menu.Item key="contact">
+        <Menu.Item key="medali">
           <Link href="/Medali">
             <h4>Medali</h4>
           </Link>
         </Menu.Item>
+        <Menu.Item key="dashboard">
+          <Link href="/DataAtlit">
+            <h4>Dashboard</h4>
+          </Link>
+        </Menu.Item>
+        </Col>
+        {/* <Col span={8}>
+          <Link href="/DataAtlit">
+            <Button style={{backgroundColor: "rgb(226, 24, 24)", color: "white"}} id="buttonNavbar">Dashboard</Button>
+          </Link>
+        </Col> */}
       </Menu>
     </Header>
   </>;

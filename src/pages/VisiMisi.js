@@ -8,14 +8,14 @@ export default function VisiMisi() {
     <>
     <Row>
         <Navbar />
-            <Col span={24} style={{backgroundColor: " rgb(0,21,41)"}}>
+            <Col span={24} style={{backgroundColor: " black"}}>
                 <Typography.Title level={1} style={{ color: "white" }} align="center">Visi & Misi</Typography.Title>
             </Col>
-            <Col span={12} style={{ backgroundColor: " rgb(0,21,41)", paddingBottom: "415px"}} align="center">
+            <Col span={12} style={{ backgroundColor: " black", paddingBottom: "415px"}} align="center">
                 <Typography.Title level={2} style={{ fontFamily: 'Arial', color: "white" }}>Visi</Typography.Title>
                 <Typography.Paragraph style={{ fontFamily: 'Arial', color: "white" }}>Terwujudnya Prestasi Olahraga Kulon Progo yang unggul di Daerah dan Nasional</Typography.Paragraph>
             </Col>
-            <Col span={12} style={{ backgroundColor: " rgb(0,21,41)", paddingBottom: "415px"}} align="center">
+            <Col span={12} style={{ backgroundColor: " black", paddingBottom: "415px"}} align="center">
                 <Typography.Title level={2} style={{ fontFamily: 'Arial', color: "white" }}>Misi</Typography.Title>
                 <Typography.Paragraph style={{ fontFamily: 'Arial',color: "white" }}>1. Mewujudkan manajemen organisasi dan tata kelola KONI Kulon Progo yang bersih dan akuntabel</Typography.Paragraph>
                 <Typography.Paragraph style={{ fontFamily: 'Arial',color: "white" }}>2. Mengembangkan pembinaan dan pelatihan olahraga prestasi yang baik, sistematis, berjenjang dan berkesinambungan</Typography.Paragraph>

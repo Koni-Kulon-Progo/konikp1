@@ -37,7 +37,7 @@ function News() {
      <Row>
         <Navbar />
         <Row>
-    <Col span={24} style={{ backgroundColor: " rgb(0,21,41)", color: "white"}}>
+    <Col span={24} style={{ backgroundColor: "black", color: "white"}}>
     <Carousel autoplay>
   {images.map((image) => (
     <Col key={image.id} span={24} align="center">
@@ -49,7 +49,7 @@ function News() {
             <h3 align="center" style={{marginBottom: "78px"}}>Komite Olahraga Nasional Indonesia KONI Kabupaten Kulon Progo merupakan induk organiasi cabang olahraga yang menaungi sebanyak 45 cabang olahraga (cabor) dan 2 badan olahraga fungsional (Siwo PWI Kulon Progo dan Perwosi Kulon Progo). Pada kepengurusan KONI Kabupaten Kulon Progo masa bakti 2021-2025 yang dipimpin Kusdira BA., segala aktifitas dilakukan di sekretariatan kantor KONI Kulon Progo yang menempati salah satu ruangan di Stadion Cangkring Wates. Untuk kelancaran pelayanan dan administrasi, KONI Kabupaten Kulon Progo mempunyai 2 (dua) orang staf yang bertugas 
                 setiap hari kerja 5 (lima)</h3>
         </Col>
-        <Col span={8} xs={{span:8}} align="center" style={{ backgroundColor: " rgb(0,21,41)"}}>
+        <Col span={8} xs={{span:8}} align="center" style={{ backgroundColor: " black"}}>
         <Card
       hoverable
       style={{ width: 340 }}
@@ -67,7 +67,7 @@ function News() {
       />
     </Card>
         </Col>
-        <Col span={8} xs={{span:8}} align="center" style={{ backgroundColor: " rgb(0,21,41)"}}>
+        <Col span={8} xs={{span:8}} align="center" style={{ backgroundColor: " black"}}>
         <Card
       hoverable
       style={{ width: 340 }}
@@ -85,7 +85,7 @@ function News() {
       />
     </Card>
         </Col>
-        <Col span={8} xs={{span:8}} align="center" style={{ backgroundColor: " rgb(0,21,41)"}}>
+        <Col span={8} xs={{span:8}} align="center" style={{ backgroundColor: " black"}}>
         <Card
       hoverable
       style={{ width: 340 }}
@@ -93,6 +93,60 @@ function News() {
         <Image
           alt="kewr"
           src={Koni3}
+          width={290}
+        />
+      }
+    >
+      <Meta
+        title="Example Card Title"
+        description="This is an example card with some text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae ipsum eget sapien rutrum blandit vel sed odio. Integer pharetra orci in risus tincidunt facilisis."
+      />
+    </Card>
+        </Col>
+        <Col span={8} xs={{span:8}} align="center" style={{ backgroundColor: " black", paddingTop : "20px", paddingBottom: "50px"}}>
+        <Card
+      hoverable
+      style={{ width: 340 }}
+      cover={
+        <Image
+          alt="kewr"
+          src={Koni2}
+          width={290}
+        />
+      }
+    >
+      <Meta
+        title="Example Card Title"
+        description="This is an example card with some text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae ipsum eget sapien rutrum blandit vel sed odio. Integer pharetra orci in risus tincidunt facilisis."
+      />
+    </Card>
+        </Col>
+        <Col span={8} xs={{span:8}} align="center" style={{ backgroundColor: " black", paddingTop: "20px", paddingBottom: "50px"}}>
+        <Card
+      hoverable
+      style={{ width: 340 }}
+      cover={
+        <Image
+          alt="kewr"
+          src={Koni2}
+          width={290}
+        />
+      }
+    >
+      <Meta
+        title="Example Card Title"
+        description="This is an example card with some text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae ipsum eget sapien rutrum blandit vel sed odio. Integer pharetra orci in risus tincidunt facilisis."
+      />
+    </Card>
+        </Col>
+        <Col span={8} xs={{span:8}} align="center" style={{ backgroundColor: " black", paddingTop: "20px", paddingBottom: "50px"}}>
+        <Card
+      hoverable
+      style={{ width: 340 }}
+      cover={
+        <Image
+          alt="kewr"
+          src={Koni2}
           width={290}
         />
       }

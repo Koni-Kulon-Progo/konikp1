@@ -28,17 +28,15 @@ body {
   text-align: center;
 }
 
+
 .backgrounde {
-  background-color: rgb(0,21,41);
-  border-radius: 0px 0px 400px 0px;
+  background-color: black;
   background-size: cover;
-  height: 728px;
 }
 
 .backgrounde1 {
-  background-color: white;
+  background-color: black;
   background-size: cover;
-  height: 728px;
 }
 
 .black-form{
@@ -72,5 +70,12 @@ body {
 
   .backgrounde > h2 {
     text-align: center;
+  }
+
+  .backgrounde > h1 {
+    display: none;
+  }
+  .h1Koni {
+    display: none;
   }
 }

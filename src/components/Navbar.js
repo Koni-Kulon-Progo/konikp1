@@ -32,7 +32,7 @@ function Navbar() {
             <h4>Medali</h4>
           </Link>
         </Menu.Item>
-        <Menu.Item key="dashboard">
+        <Menu.Item key="dataatlit">
           <Link href="/DataAtlit">
             <h4>Dashboard</h4>
           </Link>

@@ -47,6 +47,21 @@ body {
   background-color: black;
 }
 
+.box1{
+  position: relative;
+  animation: blur-to-sharp 2s ease-in-out forwards;
+  filter: blur(10px);
+}
+
+@keyframes blur-to-sharp {
+  from {
+    filter: blur(10px);
+  }
+  to {
+    filter: blur(0);
+  }
+}
+
 @media only screen and (max-width: 600px) {
 
   

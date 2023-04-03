@@ -30,10 +30,10 @@ export default function Home() {
           </Col>
           <Col xs={{ span: 24 }} md={{ span: 24 }} className="container-1">
             <div style={{ display: 'block', justifyContent: 'center',textAlign: "center" }} className="backgrounde">
-            <h1 style={{ fontSize: "75px", textAlign: 'center',margin: "0",paddingTop: "93px",color: "white", }} className="h1Koni"> <span style={{ color: "red"}}>KONI</span> KULON PROGO</h1>
-            <h2 style={{ fontSize: "20px", textAlign: "justify",marginTop: "50px", color: "grey", paddingBottom: "65px", paddingLeft: "30%", paddingRight: "30%" }}>Komite Olahraga Nasional Indonesia (KONI) adalah satu-satunya organisasi yang berwenang dan bertanggung jawab mengelola, membina, mengembangkan & mengkoordinasikan seluruh pelaksanaan kegiatan olahraga prestasi setiap anggota di Indonesia.
+            <h1 style={{ fontSize: "75px", textAlign: 'center',margin: "0",paddingTop: "54px",color: "white", }} className="h1Koni"> <span style={{ color: "red"}}>KONI</span> KULON PROGO</h1>
+            <h2 style={{ fontSize: "20px", textAlign: "justify",marginTop: "10px", color: "grey", paddingBottom: "65px", paddingLeft: "30%", paddingRight: "30%" }}>Komite Olahraga Nasional Indonesia (KONI) adalah satu-satunya organisasi yang berwenang dan bertanggung jawab mengelola, membina, mengembangkan & mengkoordinasikan seluruh pelaksanaan kegiatan olahraga prestasi setiap anggota di Indonesia.
             <br />
-            <span style={{display: "flex",textAlign: "start", marginTop: "15px"}}>
+            <span style={{display: "flex",textAlign: "start", marginTop: "15px", paddingBottom: "70px"}}>
             <Link href="/Sambutan"><Button type='primary' danger id="buttonIndex" style={{marginBottom: "40px"}}>LEBIH LANJUT</Button></Link>
             </span></h2>
             <Row>

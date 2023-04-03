@@ -236,7 +236,7 @@ function DataPelatih({ pelatih,cabor }) {
     <Layout className='layout'>
     <Sider trigger={null} collapsible collapsed={collapsed}>
           <div className="logo">
-            <h2 align="center">KONI KP</h2>
+            <h2 align="center" style={{color: "white"}}>KONI KP</h2>
           </div>
           <Menu
               theme="dark"
@@ -284,10 +284,10 @@ function DataPelatih({ pelatih,cabor }) {
       ]}
           />
           </Sider> 
-      <div style={{ backgroundColor: "black"}}>
+      <div style={{ backgroundColor: "rgb(0,21,41)"}}>
         <Row>
           <Col span={24} align="center" style={{color: "white"}}>
-            <h1>DATA PELATIH KONI KPK</h1>
+            <h1>DATA PELATIH KONI KP</h1>
           </Col>
           <Col span={12}>
           <Button type='primary' onClick={() => handleDownloadFile()} id="btn_sarpras1"> Download File</Button>

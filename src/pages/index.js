@@ -8,7 +8,7 @@ import {
 import {
   blue
 } from "@ant-design/colors"
-import { Layout, Menu , Button, Row, Col, Typography,Card,} from 'antd';
+import { Button, Row, Col} from 'antd';
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Navbar from '../components/Navbar'

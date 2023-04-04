@@ -8,7 +8,6 @@ import Koni3 from '../assets/koni3.jpeg'
 import Image from 'next/image'
 import { Carousel } from 'antd';
 import Badminton from '../assets/badminton.png'
-import Koni from '../assets/koni.jpg'
 import Renang from '../assets/renang.png'
 import Karate from '../assets/karate.png'
 

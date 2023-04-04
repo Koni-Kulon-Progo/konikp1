@@ -312,7 +312,6 @@ function DataAtlit({ atlit, cabor }) {
             destroyOnClose={true}
           >
             <Form
-              style={{ backgroundColor: "black"}}
               preserve={false}
               form={form}
               initialValues={currentAtlit}
@@ -321,8 +320,7 @@ function DataAtlit({ atlit, cabor }) {
                 label="ID"
                 hidden={true}
                 name="id"
-                rules={[{ required: false }]}
-                style={{ backgroundColor: 'red' }} // tambahkan style marginBottom
+                rules={[{ required: false }]} // tambahkan style marginBottom
               >
                 <Input />
               </Form.Item>

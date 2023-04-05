@@ -25,16 +25,16 @@ export default function Home() {
         <Row className='row-box'>
         <Col xs={{ span: 24 }} md={{ span: 24 }} className="container-2">
             <div style={{ display: 'block', justifyContent: 'center',textAlign: "center" }} className="backgrounde1">
-            <Image src={Koni} alt="Logo Koni Kulon Progo" width={250} height={250} style={{marginTop: "80px"}} />
+            <Image src={Koni} alt="Logo Koni Kulon Progo" width={250} height={250} style={{marginTop: "80px"}} className="header-img-koni" />
             </div>
           </Col>
           <Col xs={{ span: 24 }} md={{ span: 24 }} className="container-1">
             <div style={{ display: 'block', justifyContent: 'center',textAlign: "center" }} className="backgrounde">
             <h1 style={{ fontSize: "75px", textAlign: 'center',margin: "0",paddingTop: "54px",color: "white", }} className="h1Koni"> <span style={{ color: "red"}}>KONI</span> KULON PROGO</h1>
-            <h2 style={{ fontSize: "20px", textAlign: "justify",marginTop: "10px", color: "grey", paddingBottom: "65px", paddingLeft: "30%", paddingRight: "30%" }}>Komite Olahraga Nasional Indonesia (KONI) adalah satu-satunya organisasi yang berwenang dan bertanggung jawab mengelola, membina, mengembangkan & mengkoordinasikan seluruh pelaksanaan kegiatan olahraga prestasi setiap anggota di Indonesia.
+            <h2 style={{ fontSize: "20px", textAlign: "justify", color: "grey", paddingBottom: "65px", paddingLeft: "30%", paddingRight: "30%" }} className="h2-komite">Komite Olahraga Nasional Indonesia (KONI) adalah satu-satunya organisasi yang berwenang dan bertanggung jawab mengelola, membina, mengembangkan & mengkoordinasikan seluruh pelaksanaan kegiatan olahraga prestasi setiap anggota di Indonesia.
             <br />
-            <span style={{display: "flex",textAlign: "start", marginTop: "15px", paddingBottom: "70px"}}>
-            <Link href="/Sambutan"><Button type='primary' danger id="buttonIndex" style={{marginBottom: "40px"}}>LEBIH LANJUT</Button></Link>
+            <span style={{display: "flex",textAlign: "start", marginTop: "15px", paddingBottom: "70px"}} className="header-span-button">
+            <Link href="/Sambutan"><Button type='primary' className='btn-header' danger id="buttonIndex" style={{marginBottom: "40px"}}>LEBIH LANJUT</Button></Link>
             </span></h2>
             <Row>
             </Row>

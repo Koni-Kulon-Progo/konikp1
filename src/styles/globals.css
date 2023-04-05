@@ -28,6 +28,10 @@ body {
   text-align: center;
 }
 
+.navbar-logo{
+  display: none;
+}
+
 
 .backgrounde {
   background-color: black;
@@ -41,6 +45,10 @@ body {
 
 .black-form{
   background-color: white;
+}
+
+.navbar-logo{
+  color: red;
 }
 
 
@@ -60,12 +68,53 @@ body {
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
 
+  .navbar-h1{
+    color: red;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .navbar-col-2{
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-h4{
+    display: none;
+  }
   
+  .navbar-logo{
+    display: block;
+  }
+
+  .navbar-menu{
+    text-align: center;
+    justify-content: start;
+  }
 
   .row-box {
     display: block;
+  }
+
+  .header-img-koni{
+    width: 220px !important;
+    height: 220px !important;
+  }
+
+  .header-span-button{
+    text-align: center !important;
+  }
+
+  .h2-komite{
+    margin-top: 0;
+    padding-top: 20px;
+    margin-left: 3% !important;
+    margin-right: 3% !important;
+    padding-left: 3% !important;
+    padding-right: 3% !important;
+    color: white !important;
   }
 
   .backgrounde1 > img {
@@ -78,7 +127,7 @@ body {
     width: 390px;
     border-radius: 0px 0px 0px 0px;
     text-align: center;
-    height: 820px;
+    height: 350px;
   }
 
   .backgrounde > h2 {

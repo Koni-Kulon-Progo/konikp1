@@ -70,6 +70,32 @@ body {
 
 @media only screen and (max-width: 768px) {
 
+  .header-visimisi{
+    font-size: 25px !important;
+    display: none;
+  }
+
+  .col-visi{
+    padding-bottom: 10px !important;
+  }
+
+  .col-misi{
+    padding-bottom: 30px !important;
+  }
+
+  .visi{
+    font-size: 30px !important;
+  }
+
+  .misi{
+    font-size: 30px !important;
+  }
+
+  .visimisi{
+    font-size: 20px !important;
+    text-align: justify !important;
+  }
+
   .navbar-h1{
     color: red;
     text-align: center;
@@ -124,7 +150,7 @@ body {
   }
 
   .backgrounde {
-    width: 390px;
+    width: 100%;
     border-radius: 0px 0px 0px 0px;
     text-align: center;
     height: 350px;

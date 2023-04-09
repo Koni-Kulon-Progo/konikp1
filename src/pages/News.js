@@ -48,7 +48,7 @@ function News() {
             <h3 align="center" style={{marginBottom: "78px",paddingLeft: "20%", paddingRight: "20%"}}>Komite Olahraga Nasional Indonesia KONI Kabupaten Kulon Progo merupakan induk organiasi cabang olahraga yang menaungi sebanyak 45 cabang olahraga (cabor) dan 2 badan olahraga fungsional (Siwo PWI Kulon Progo dan Perwosi Kulon Progo). Pada kepengurusan KONI Kabupaten Kulon Progo masa bakti 2021-2025 yang dipimpin Kusdira BA., segala aktifitas dilakukan di sekretariatan kantor KONI Kulon Progo yang menempati salah satu ruangan di Stadion Cangkring Wates. Untuk kelancaran pelayanan dan administrasi, KONI Kabupaten Kulon Progo mempunyai 2 (dua) orang staf yang bertugas 
                 setiap hari kerja 5 (lima)</h3>
         </Col>
-        <Col span={8} xs={{span:8}} align="center" style={{ backgroundColor: " black"}}>
+        <Col span={8} xs={24} align="center" style={{ backgroundColor: " black",paddingTop : "20px", paddingBottom: "50px"}}>
         <Card
       hoverable
       style={{ width: 340 }}
@@ -66,7 +66,7 @@ function News() {
       />
     </Card>
         </Col>
-        <Col span={8} xs={{span:8}} align="center" style={{ backgroundColor: " black"}}>
+        <Col span={8} xs={24} align="center" style={{ backgroundColor: " black",paddingTop : "20px", paddingBottom: "50px"}}>
         <Card
       hoverable
       style={{ width: 340 }}
@@ -84,7 +84,7 @@ function News() {
       />
     </Card>
         </Col>
-        <Col span={8} xs={{span:8}} align="center" style={{ backgroundColor: " black"}}>
+        <Col span={8} xs={24} align="center" style={{ backgroundColor: " black",paddingTop : "20px", paddingBottom: "50px"}}>
         <Card
       hoverable
       style={{ width: 340 }}
@@ -102,7 +102,7 @@ function News() {
       />
     </Card>
         </Col>
-        <Col span={8} xs={{span:8}} align="center" style={{ backgroundColor: " black", paddingTop : "20px", paddingBottom: "50px"}}>
+        <Col span={8} xs={24} align="center" style={{ backgroundColor: " black", paddingTop : "20px", paddingBottom: "50px"}}>
         <Card
       hoverable
       style={{ width: 340 }}
@@ -120,7 +120,7 @@ function News() {
       />
     </Card>
         </Col>
-        <Col span={8} xs={{span:8}} align="center" style={{ backgroundColor: " black", paddingTop: "20px", paddingBottom: "50px"}}>
+        <Col span={8} xs={24} align="center" style={{ backgroundColor: " black", paddingTop: "20px", paddingBottom: "50px"}}>
         <Card
       hoverable
       style={{ width: 340 }}
@@ -138,7 +138,7 @@ function News() {
       />
     </Card>
         </Col>
-        <Col span={8} xs={{span:8}} align="center" style={{ backgroundColor: " black", paddingTop: "20px", paddingBottom: "50px"}}>
+        <Col span={8} xs={24} align="center" style={{ backgroundColor: " black", paddingTop: "20px", paddingBottom: "50px"}}>
         <Card
       hoverable
       style={{ width: 340 }}

@@ -1,6 +1,5 @@
 import React from 'react'
 import Navbar from "../components/Navbar"
-import Footer from '../components/Footer'
 import {Row, Col, Typography} from 'antd';
 
 export default function VisiMisi() {
@@ -8,9 +7,6 @@ export default function VisiMisi() {
     <>
     <Row>
         <Navbar />
-            <Col span={24} style={{backgroundColor: " black"}}>
-                <Typography.Title level={1} style={{ color: "white" }} align="center" className='header-visimisi'>Visi & Misi</Typography.Title>
-            </Col>
             <Col span={12} xs={24} style={{ backgroundColor: " black", paddingBottom: "335px"}} align="center" className='col-visi'>
                 <Typography.Title level={2} style={{ fontFamily: 'Arial', color: "red", fontSize: "50px"}} className="visi">Visi</Typography.Title>
                 <Typography.Paragraph style={{ fontFamily: 'Arial', color: "white", fontSize: "20px" }} className="visimisi">Terwujudnya Prestasi Olahraga Kulon Progo yang unggul di Daerah dan Nasional</Typography.Paragraph>
@@ -22,7 +18,7 @@ export default function VisiMisi() {
                 <Typography.Paragraph style={{ fontFamily: 'Arial',color: "white" ,fontSize: "20px" }} className="visimisi">3. Meningkatkan kualitas Sumber Daya Manusia pelaku olahraga</Typography.Paragraph>
                 <Typography.Paragraph style={{ fontFamily: 'Arial',color: "white" ,fontSize: "20px" }} className="visimisi">4. Meningkatkan kesejahteraan pelaku olahraga yang berprestasi dan berdedikasi</Typography.Paragraph>
             </Col>
-            <Footer />
+            
     </Row>
     </>
   )

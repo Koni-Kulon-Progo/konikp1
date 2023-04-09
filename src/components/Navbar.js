@@ -1,8 +1,8 @@
 import React from "react";
-import { Layout, Menu , Button, Row, Col, Typography,Card} from 'antd';
+import { Layout, Menu ,Col, Typography} from 'antd';
 import Link from "next/link";
 import Image from "next/image";
-import { HomeOutlined,TrophyOutlined } from "@ant-design/icons";
+import { HomeOutlined,TrophyOutlined,ProfileOutlined,TeamOutlined,BellOutlined  } from "@ant-design/icons";
 import LogoKoni from '../assets/koni.png'
 const { Header } = Layout;
 const { Title } = Typography;
@@ -21,13 +21,13 @@ function Navbar() {
 </items>
 <items key="visimisi" style={{ marginRight: '20px' }}>
   <Link href="/VisiMisi" style={{color:"white"}}>
-  <HomeOutlined className="navbar-logo"/>
+  <ProfileOutlined className="navbar-logo"/>
     <h4 className="navbar-h4">Visi & Misi</h4>
   </Link>
 </items>
 <items key="news" style={{ marginRight: '20px' }}>
   <Link href="/News" style={{color:"white"}}>
-  <HomeOutlined className="navbar-logo"/>
+  <BellOutlined className="navbar-logo"/>
     <h4 className="navbar-h4">News & Event</h4>
   </Link>
 </items>
@@ -39,7 +39,7 @@ function Navbar() {
 </items>
 <items key="dataatlit" style={{ marginRight: '20px' }}>
   <Link href="/DataAtlit" style={{color:"white"}}>
-  <HomeOutlined className="navbar-logo"/>
+  <TeamOutlined className="navbar-logo"/>
     <h4 className="navbar-h4">Dashboard</h4>
   </Link>
 </items>

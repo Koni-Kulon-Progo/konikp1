@@ -2,7 +2,7 @@ import React from "react";
 import { Layout, Menu , Button, Row, Col, Typography,Card} from 'antd';
 import Link from "next/link";
 import Image from "next/image";
-import { HomeOutlined } from "@ant-design/icons";
+import { HomeOutlined,TrophyOutlined } from "@ant-design/icons";
 import LogoKoni from '../assets/koni.png'
 const { Header } = Layout;
 const { Title } = Typography;
@@ -33,7 +33,7 @@ function Navbar() {
 </items>
 <items key="medali" style={{ marginRight: '20px' }}>
   <Link href="/Medali" style={{color:"white"}}>
-  <HomeOutlined className="navbar-logo"/>
+  <TrophyOutlined className="navbar-logo"/>
     <h4 className="navbar-h4">Medali</h4>
   </Link>
 </items>

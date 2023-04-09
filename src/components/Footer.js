@@ -1,12 +1,12 @@
 import React from 'react'
 import { Layout, Menu , Button, Row, Col, Typography,Card} from 'antd';
-import { PushpinOutlined,MobileOutlined,MailOutlined,WhatsAppOutlined } from '@ant-design/icons';
+import { PushpinOutlined,MobileOutlined,MailOutlined,WhatsAppOutlined,EnvironmentOutlined } from '@ant-design/icons';
 
 function Footer() {
   return (
     <>
         <Col xs={{ span: 24 }} xl={{span : 6}}  style={{backgroundColor: "black", color: "grey"}}>
-        <h4 align='center'><PushpinOutlined style={{color: "white", fontSize: "25px"}}/><br />
+        <h4 align='center'><EnvironmentOutlined style={{color: "white", fontSize: "25px"}}/><br />
         <a href="https://api.whatsapp.com/send?phone=6281234567890" style={{ color: "white"}}>Wates , Kulon Progo, Yogyakarta</a>
             </h4>
         </Col>

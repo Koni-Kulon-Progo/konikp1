@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout, Menu , Button, Row, Col, Typography,Card} from 'antd';
+import { Col} from 'antd';
 import { PushpinOutlined,MobileOutlined,MailOutlined,WhatsAppOutlined,EnvironmentOutlined } from '@ant-design/icons';
 
 function Footer() {

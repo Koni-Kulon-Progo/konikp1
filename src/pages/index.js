@@ -8,7 +8,7 @@ import {
 import {
   blue
 } from "@ant-design/colors"
-import { Button, Row, Col} from 'antd';
+import { Button, Row, Col, Typography} from 'antd';
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Navbar from '../components/Navbar'
@@ -36,8 +36,6 @@ export default function Home() {
             <span style={{display: "flex",textAlign: "start", marginTop: "15px", paddingBottom: "70px"}} className="header-span-button">
             <Link href="/Sambutan"><Button type='primary' className='btn-header' danger id="buttonIndex" style={{marginBottom: "40px"}}>LEBIH LANJUT</Button></Link>
             </span></h2>
-            <Row>
-            </Row>
             </div>
           </Col>
         </Row>

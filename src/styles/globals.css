@@ -59,7 +59,47 @@ body {
   margin: 0;
 }
 
+.h1-adminUser{
+  color: red;
+}
 
+.col-userAdmin{
+  background-color: black;
+  height: 975px;
+  color: red;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid red;
+}
+
+.col-admin{
+  height: 400px;
+  width: 400px;
+  display: flex;
+  border: 1px solid white;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10%;
+}
+
+.col-user{
+  height: 400px;
+  width: 400px;
+  display: flex;
+  border: 1px solid white;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10%;
+}
+
+.icon{
+  color: white;
+  font-size: 200px;
+}
 
 .box1{
   position: relative;

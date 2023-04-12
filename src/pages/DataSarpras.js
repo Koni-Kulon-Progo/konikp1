@@ -6,8 +6,9 @@ import {
     VideoCameraOutlined,
     DiffOutlined,
     HomeOutlined,
+    DownloadOutlined
   } from '@ant-design/icons';
-  import { Layout, Menu, Row, Col, Divider, Table, Form, Modal, Input, Button, Select} from 'antd';
+  import { Layout, Menu, Table, Form, Modal, Input, Button, Select} from 'antd';
   import React, { useState } from 'react';
   import Link from 'next/link'
   import prisma from '@/utils/prisma';
@@ -66,6 +67,7 @@ import {
   
   function DataSarpras({ sarpras,cabor }) {
     const [collapsed, setCollapsed] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const router = useRouter()
   
     //  edit
@@ -110,6 +112,19 @@ import {
       } catch (error) {
         console.error(error);
       }};
+
+      const logout = async () => {
+        setIsLoading(true);
+        try {
+          const response = await fetch("/api/auth/logout", { method: "POST" });
+          const data = await response.json();
+          console.log(data.message)
+          router.push("/")
+        } catch (error) {
+          console.error(error);
+        }
+        setIsLoading(false);
+      }
   
     const handleCancel = () => {
       form.resetFields()
@@ -203,7 +218,7 @@ import {
       <Layout className="layout">
           <Sider trigger={null} collapsible collapsed={collapsed}>
           <div className="logo">
-            <h2 align="center">KONI KP</h2>
+            <h2 align="center" style={{color: "white"}}>KONI KP</h2>
           </div>
             <Menu
                 theme="dark"
@@ -239,16 +254,18 @@ import {
                   },
                   {
                     key: "5",
-                    icon: <HomeOutlined />,
-                    label: <Link href="/">Home</Link>,
+                    label: <Button onClick={logout} disabled={isLoading}><HomeOutlined />
+                    {isLoading ? "Logging out..." : "Home"}
+                  </Button>
                   },
+                  
         ]}
             />
           </Sider>
           <div style={{ backgroundColor: "black"}}>
             <h1 align="center" style={{color: "white",margin: "0 0 50px 0"}}>DATA SARPRAS KONI KP</h1>
             <div style={{ display: 'flex', justifyContent: 'space-between',marginBottom: "20px" }}>
-            <Button type='primary' onClick={() => handleDownloadFile()} id="btn_sarpras1"> Download File</Button>
+            <Button type='primary' onClick={() => handleDownloadFile()} id="btn_sarpras1"><DownloadOutlined /> Download</Button>
             <Button type='primary' onClick={() => setVisible(true)} id="btn_sarpras12">+ Data</Button>
             </div>
           <Table

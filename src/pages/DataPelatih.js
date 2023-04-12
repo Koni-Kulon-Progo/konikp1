@@ -7,15 +7,14 @@ import {
   VideoCameraOutlined,
   HomeOutlined,
   DiffOutlined,
+  DownloadOutlined
 } from '@ant-design/icons';
-import { Layout, Menu, Row, Col, Divider, Table, Form, Modal, Input, Button, Select} from 'antd';
+import { Layout, Menu, Row, Col, Table, Form, Modal, Input, Button, Select} from 'antd';
 import React, { useState } from 'react';
 import Link from 'next/link'
 import prisma from '@/utils/prisma';
 import { useRouter } from 'next/router'
 import { withIronSessionSsr } from 'iron-session/next';
-import Image from 'next/image';
-import Koni from '../assets/koni.jpg'
 
 const { Header, Sider, Content } = Layout;
 
@@ -272,15 +271,10 @@ function DataPelatih({ pelatih,cabor }) {
                 },
                 {
                   key: "5",
-                  icon: <HomeOutlined />,
-                  label: <Link href="/">Home</Link>,
+                    label: <Button onClick={logout} disabled={isLoading}><HomeOutlined />
+                    {isLoading ? "Logging out..." : "Home"}
+                  </Button>
                 },
-                {
-                  key: "6",
-                  label: <Button onClick={logout} disabled={isLoading}>
-                  {isLoading ? "Logging out..." : "Logout"}
-                </Button>
-                }
       ]}
           />
           </Sider> 
@@ -290,7 +284,7 @@ function DataPelatih({ pelatih,cabor }) {
             <h1>DATA PELATIH KONI KP</h1>
           </Col>
           <Col span={12}>
-          <Button type='primary' onClick={() => handleDownloadFile()} id="btn_sarpras1"> Download File</Button>
+          <Button type='primary' onClick={() => handleDownloadFile()} id="btn_sarpras1"><DownloadOutlined /> Download</Button>
             </Col>
             <Col span={12} style={{textAlign: "end"}}>
           <Button type='primary' onClick={() => setVisible(true)} id="btn_pelatihhhh">+ Data</Button>

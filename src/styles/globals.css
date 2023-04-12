@@ -2,6 +2,10 @@ body {
   margin: 0;
 }
 
+.col-dataAtlit{
+  background-color: royalblue !important;
+}
+
 .trigger {
   padding: 0 24px;
   font-size: 18px;

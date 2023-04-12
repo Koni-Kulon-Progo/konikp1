@@ -66,6 +66,7 @@ export const getServerSideProps = withIronSessionSsr(
 
 function DataWasit({ wasit,cabor }) {
   const [collapsed, setCollapsed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter()
 
   //  edit
@@ -111,6 +112,19 @@ function DataWasit({ wasit,cabor }) {
     } catch (error) {
       console.error(error);
     }};
+
+    const logout = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch("/api/auth/logout", { method: "POST" });
+      const data = await response.json();
+      console.log(data.message)
+      router.push("/")
+    } catch (error) {
+      console.error(error);
+    }
+    setIsLoading(false);
+  }
 
   const handleCancel = () => {
     form.resetFields()
@@ -260,8 +274,9 @@ function DataWasit({ wasit,cabor }) {
                 },
                 {
                   key: "5",
-                  icon: <HomeOutlined />,
-                  label: <Link href="/">Home</Link>,
+                    label: <Button onClick={logout} disabled={isLoading}><HomeOutlined />
+                    {isLoading ? "Logging out..." : "Home"}
+                  </Button>
                 },
       ]}
           />
@@ -278,6 +293,7 @@ function DataWasit({ wasit,cabor }) {
               <Button type="primary" onClick={() => setVisible(true)} id="mutbgttt">+ Data </Button>
             </Col>
         <Table
+          className='black-form'
           columns={columns}
           dataSource={data}
           scroll={{

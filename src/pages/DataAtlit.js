@@ -6,6 +6,7 @@ import {
   VideoCameraOutlined,
   HomeOutlined,
   EditOutlined,
+  DownloadOutlined
 } from "@ant-design/icons";
 import { Layout, Menu, Table, Form, Modal, Input, Button, Select,Row,Col } from "antd";
 import React, { useState } from "react";
@@ -13,8 +14,6 @@ import Link from "next/link";
 import prisma from "@/utils/prisma";
 import { useRouter } from "next/router";
 import { withIronSessionSsr } from 'iron-session/next';
-import Image from 'next/image'
-import Koni from '../assets/koni.jpg'
 
 const { Header, Sider, Content } = Layout;
 
@@ -273,15 +272,11 @@ function DataAtlit({ atlit, cabor }) {
               },
               {
                 key: "5",
-                icon: <HomeOutlined />,
-                label: <Link href="/">Home</Link>,
-              },
-              {
-                key: "6",
-                label: <Button onClick={logout} disabled={isLoading}>
-                {isLoading ? "Logging out..." : "Logout"}
+                label: <Button onClick={logout} disabled={isLoading}><HomeOutlined />
+                {isLoading ? "Logging out..." : "Home"}
               </Button>
-              }
+              },
+
             ]}
           />
         </Sider>
@@ -291,7 +286,7 @@ function DataAtlit({ atlit, cabor }) {
               <h1>DATA ATLIT KONI KP</h1>
             </Col>
             <Col span={12}>
-              <Button type='primary' onClick={() => handleDownloadFile()} id="btn_sarpras1"> Download File</Button>
+              <Button type='primary' onClick={() => handleDownloadFile()} id="btn_sarpras1"><DownloadOutlined /> Download </Button>
             </Col>
             <Col span={12} style={{textAlign: "end"}}>
               <Button type="primary" onClick={() => setVisible(true)} id="mutbgttt">+ Data </Button>
@@ -330,6 +325,7 @@ function DataAtlit({ atlit, cabor }) {
                 rules={[
                   { required: true, message: "Tolong Input Nama lengkap!" },
                 ]}
+                className="col-dataAtlit"
               >
                 <Input />
               </Form.Item>

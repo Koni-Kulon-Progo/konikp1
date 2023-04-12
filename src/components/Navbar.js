@@ -38,7 +38,7 @@ function Navbar() {
   </Link>
 </items>
 <items key="dataatlit" style={{ marginRight: '20px' }}>
-  <Link href="/DataAtlit" style={{color:"white"}}>
+  <Link href="/userAdmin" style={{color:"white"}}>
   <TeamOutlined className="navbar-logo"/>
     <h4 className="navbar-h4">Dashboard</h4>
   </Link>

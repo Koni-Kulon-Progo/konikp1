@@ -12,7 +12,7 @@ function userAdmin() {
     <>
     <Row>
         <Col span={12} className="col-userAdmin">
-            <Link href="/">
+            <Link href="/DataPelatih">
             <Col span={24} className="col-admin">
                 <h1 className='h1-adminUser'><UserOutlined className='icon' /><br /> ADMIN</h1>
             </Col>

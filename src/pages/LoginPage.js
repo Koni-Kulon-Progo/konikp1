@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Input, Button, Col, Row } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { useRouter } from "next/router";
-import Koni from "../assets/konikp.png";
+import Koni from "../assets/koni.png";
 import Image from "next/image";
 
 function LoginPage() {

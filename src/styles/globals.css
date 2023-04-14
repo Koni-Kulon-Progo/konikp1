@@ -2,6 +2,12 @@ body {
   margin: 0;
 }
 
+.col-visi-misi{
+  background-color: red;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
 .col-dataAtlit{
   background-color: royalblue !important;
 }
@@ -78,7 +84,7 @@ body {
 }
 
 .col-admin:hover {
-  background-image: linear-gradient(to right, rgb(0, 102, 255), rgba(255,0,0,0))
+  background-image: linear-gradient(to right, rgb(255, 230, 0), rgba(255,0,0,0))
 }
 
 
@@ -126,6 +132,11 @@ body {
 
 @media only screen and (max-width: 768px) {
 
+  .div-atlit {
+    max-width: 100% !important;
+    padding-top: 20px;
+  }
+
   .header-visimisi{
     font-size: 25px !important;
     display: none;
@@ -133,10 +144,16 @@ body {
 
   .col-visi{
     padding-bottom: 10px !important;
+    max-width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
   }
 
   .col-misi{
     padding-bottom: 30px !important;
+    max-width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
   }
 
   .visi{

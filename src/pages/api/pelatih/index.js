@@ -1,7 +1,7 @@
 import prisma from '../../../utils/prisma'
 
 async function createPelatih(body, res) {
-    const create = await prisma.pelath.create({
+    const create = await prisma.pelatih.create({
         data: body
     })
     return res.status(200).send(create)

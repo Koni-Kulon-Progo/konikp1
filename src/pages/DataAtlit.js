@@ -325,7 +325,6 @@ function DataAtlit({ atlit, cabor }) {
                 rules={[
                   { required: true, message: "Tolong Input Nama lengkap!" },
                 ]}
-                className="col-dataAtlit"
               >
                 <Input />
               </Form.Item>
@@ -373,7 +372,7 @@ function DataAtlit({ atlit, cabor }) {
               <Form.Item name="cabor_id">
                 <Select
                   showSearch
-                  placeholder="Select a person"
+                  placeholder="Select a Cabor"
                   optionFilterProp="children"
                   // onChange={onChange}
                   // onSearch={onSearch}

@@ -1,33 +1,32 @@
-# Install dependencies only when needed
-FROM node:16-alpine AS builder
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk add --no-cache libc6-compat
+# Use the official Node.js runtime as the parent image
+FROM node:14
+
+# Set the working directory to /app
 WORKDIR /app
+
+# Copy the package.json and package-lock.json files to the container
+COPY package*.json ./
+
+# Install the app's dependencies
+RUN npm install
+
+# Copy the rest of the app's source code to the container
 COPY . .
-RUN npm ci
 
-ENV NEXT_TELEMETRY_DISABLED 1
+# Install Prisma CLI globally
+RUN npm install -g prisma
 
-# Add `ARG` instructions below if you need `NEXT_PUBLIC_` variables
-# then put the value on your fly.toml
-# Example:
-# ARG NEXT_PUBLIC_EXAMPLE="value here"
+# Generate Prisma client
+RUN npx prisma generate
 
-# If using npm comment out above and use below instead
+# Build the Next.js app
 RUN npm run build
 
-# Production image, copy all the files and run next
-FROM node:16-alpine AS runner
-WORKDIR /app
+# Install PM2 globally
+RUN npm install pm2 -g
 
-ENV NODE_ENV production
-ENV NEXT_TELEMETRY_DISABLED 1
+# Copy the ecosystem.config.js file to the container
+COPY ecosystem.config.js .
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-COPY --from=builder /app ./
-
-USER nextjs
-
-CMD ["npm", "run", "start"]
+# Start the Next.js app using PM2
+CMD ["pm2-runtime", "start", "ecosystem.config.js"]

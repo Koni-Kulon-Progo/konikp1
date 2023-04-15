@@ -58,6 +58,15 @@ CREATE TABLE "Sarpras" (
     CONSTRAINT "Sarpras_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "User" (
+    "id" SERIAL NOT NULL,
+    "email" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
+
+    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+);
+
 -- AddForeignKey
 ALTER TABLE "Atlit" ADD CONSTRAINT "Atlit_cabor_id_fkey" FOREIGN KEY ("cabor_id") REFERENCES "Cabor"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 

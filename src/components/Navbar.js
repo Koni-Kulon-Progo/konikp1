@@ -19,10 +19,10 @@ function Navbar() {
     <h4 className="navbar-h4">Home</h4>
   </Link>
 </items>
-<items key="visimisi" style={{ marginRight: '20px' }}>
-  <Link href="/VisiMisi" style={{color:"white"}}>
+<items key="pengurus" style={{ marginRight: '20px' }}>
+  <Link href="/Pengurus" style={{color:"white"}}>
   <ProfileOutlined className="navbar-logo"/>
-    <h4 className="navbar-h4">Visi & Misi</h4>
+    <h4 className="navbar-h4">Pengurus</h4>
   </Link>
 </items>
 <items key="news" style={{ marginRight: '20px' }}>

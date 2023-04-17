@@ -1,4 +1,5 @@
 module.exports = {
+<<<<<<< HEAD
   apps : [{
     script: 'index.js',
     watch: '.'
@@ -19,4 +20,16 @@ module.exports = {
       'pre-setup': ''
     }
   }
+=======
+  apps: [
+    {
+      name: "koni-app",
+      script: "npm",
+      args: "start",
+      env: {
+          APP_ENV: "production"
+      }
+    }
+  ]
+>>>>>>> e423d33fb680d5d3b0fe5b159229ff452bf11321
 };

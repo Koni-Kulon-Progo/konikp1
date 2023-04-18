@@ -1,32 +1,28 @@
-# Use the official Node.js runtime as the parent image
-FROM node:14
-
-# Set the working directory to /app
-WORKDIR /app
-
-# Copy the package.json and package-lock.json files to the container
-COPY package*.json ./
-
-# Install the app's dependencies
-RUN npm install
-
-# Copy the rest of the app's source code to the container
-COPY . .
-
-# Install Prisma CLI globally
-RUN npm install -g prisma
-
-# Generate Prisma client
-RUN npx prisma generate
-
-# Build the Next.js app
-RUN npm run build
+FROM node:14-alpine
 
 # Install PM2 globally
 RUN npm install pm2 -g
 
-# Copy the ecosystem.config.js file to the container
+# Set working directory to /app
+WORKDIR /app
+
+# Copy package.json and package-lock.json to the container
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the app files to the container
+COPY . .
+
+# Copy ecosystem.config.js to the container
 COPY ecosystem.config.js .
 
-# Start the Next.js app using PM2
+# Build the app
+RUN npm run build
+
+# Expose port 3000
+EXPOSE 3000
+
+# Start PM2 and run the app
 CMD ["pm2-runtime", "start", "ecosystem.config.js"]
